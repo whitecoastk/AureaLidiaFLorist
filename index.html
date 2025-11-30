@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea Lidia Florist - Flores Exclusivas en CDMX | Arreglos Florales Personalizados</title>
+    <meta name="description" content="Florería premium en Ciudad de México. Arreglos florales personalizados, ramos románticos, centros de mesa elegantes. Entrega a domicilio en CDMX. ¡Cotiza ahora!">
+    <meta name="keywords" content="florería CDMX, arreglos florales, ramos de rosas, entrega de flores, flores personalizadas, floristería Ciudad de México, flores a domicilio">
+    <meta property="og:title" content="Aurea Lidia Florist - Flores Exclusivas en CDMX">
+    <meta property="og:description" content="Arreglos florales personalizados con entrega a domicilio en Ciudad de México. Rosas frescas, diseños únicos y servicio premium.">
+    <meta property="og:image" content="resources/hero-flores.jpg">
+    <meta property="og:url" content="https://aurealidiaflorist.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-white: #FFFFFF;
+            --secondary-pink: #F8E8E8;
+            --accent-green: #A8C4A2;
+            --deep-pink: #D4A5A5;
+            --text-dark: #2D2D2D;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-white) 0%, var(--secondary-pink) 100%);
+            min-height: 100vh;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(248, 232, 232, 0.3), rgba(168, 196, 162, 0.3)), url('resources/hero-flores.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 165, 165, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--deep-pink), var(--accent-green));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 165, 165, 0.4);
+        }
+        
+        .floating-petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .petal {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--deep-pink);
+            border-radius: 50% 0 50% 0;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.open {
+            right: 0;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .splide__arrow {
+            background: var(--deep-pink) !important;
+            opacity: 0.8;
+        }
+        
+        .splide__arrow:hover {
+            opacity: 1;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 165, 165, 0.2);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, var(--accent-green), var(--deep-pink));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/525512345678" class="whatsapp-float bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors" target="_blank">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.03 22l5.25-1.38c1.45.79 3.08 1.21 4.76 1.21 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zM12.04 19.5c-1.52 0-2.98-.45-4.23-1.29l-.3-.18-3.12.82.83-3.04-.2-.31c-.87-1.34-1.33-2.9-1.33-4.52 0-4.67 3.8-8.47 8.47-8.47s8.47 3.8 8.47 8.47-3.8 8.47-8.47 8.47z"/>
+            <path d="M12.04 6.5c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5zm0 7.5c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
+        </svg>
+    </a>
+
+    <!-- Cart Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-display font-semibold text-gray-800">Carrito de Compras</h3>
+                <button onclick="closeCart()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="p-6" id="cartItems">
+            <p class="text-gray-500 text-center py-8">Tu carrito está vacío</p>
+        </div>
+        <div class="p-6 border-t border-gray-200" id="cartFooter" style="display: none;">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-semibold text-lg">Total:</span>
+                <span class="font-bold text-xl text-green-600" id="cartTotal">$0.00</span>
+            </div>
+            <button onclick="proceedToCheckout()" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
+                Proceder al Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-display font-bold text-gray-800">
+                        <span class="text-pink-400">Aurea</span> <span class="text-green-600">Lidia</span>
+                    </h1>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-pink-400 px-3 py-2 text-sm font-medium transition-colors">Inicio</a>
+                        <a href="catalogo.html" class="text-gray-700 hover:text-pink-400 px-3 py-2 text-sm font-medium transition-colors">Catálogo</a>
+                        <a href="personalizar.html" class="text-gray-700 hover:text-pink-400 px-3 py-2 text-sm font-medium transition-colors">Personalizar</a>
+                        <a href="nosotros.html" class="text-gray-700 hover:text-pink-400 px-3 py-2 text-sm font-medium transition-colors">Nosotros</a>
+                        <a href="contacto.html" class="text-gray-700 hover:text-pink-400 px-3 py-2 text-sm font-medium transition-colors">Contacto</a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCart()" class="relative p-2 text-gray-700 hover:text-pink-400 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9m-9 0V19a2 2 0 002 2h7a2 2 0 002-2v-4"></path>
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" id="cartCount">0</span>
+                    </button>
+                    
+                    <button class="md:hidden p-2 text-gray-700" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-pink-400">Inicio</a>
+                <a href="catalogo.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400">Catálogo</a>
+                <a href="personalizar.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400">Personalizar</a>
+                <a href="nosotros.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400">Nosotros</a>
+                <a href="contacto.html" class="block px-3 py-2 text-gray-700 hover:text-pink-400">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="floating-petals">
+            <!-- Petals will be generated by JavaScript -->
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 drop-shadow-lg">
+                <span class="italic">Aurea</span> <span class="font-script text-6xl md:text-8xl">Lidia</span>
+            </h1>
+            <div class="text-xl md:text-2xl text-white mb-8 font-light">
+                <span id="typed-text"></span>
+            </div>
+            <p class="text-lg md:text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow">
+                Creamos arreglos florales únicos para momentos especiales. Con más de 15 años de experiencia, 
+                llevamos la belleza y elegancia de las flores frescas a tu hogar en CDMX.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="catalogo.html" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform">
+                    Ver Catálogo
+                </a>
+                <a href="personalizar.html" class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg border-2 border-white/30 hover:bg-white/30 transition-colors">
+                    Personalizar Arreglo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-800 mb-4">
+                    Arreglos <span class="text-pink-400">Destacados</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Nuestra selección más popular de arreglos florales, perfectos para cualquier ocasión especial
+                </p>
+            </div>
+            
+            <div class="splide" id="featuredProducts">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden mx-4">
+                                <div class="relative">
+                                    <img src="resources/arreglo-rosas-pink.jpg" alt="Ramo Elegante Rosas" class="w-full h-64 object-cover">
+                                    <div class="absolute top-4 right-4">
+                                        <span class="price-tag">$899</span>
+                                    </div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Más Vendido</span>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-display font-semibold text-gray-800 mb-2">Ramo Elegante Rosas</h3>
+                                    <p class="text-gray-600 mb-4">Hermoso ramo de 24 rosas rosadas con follaje premium y envoltura elegante.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-500">✓ Entrega mismo día</span>
+                                        <button onclick="addToCart('ramo-elegante', 'Ramo Elegante Rosas', 899, 'resources/arreglo-rosas-pink.jpg')" class="bg-pink-400 text-white px-4 py-2 rounded-lg hover:bg-pink-500 transition-colors">
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden mx-4">
+                                <div class="relative">
+                                    <img src="resources/ramo-romantico.jpg" alt="Amor Eterno" class="w-full h-64 object-cover">
+                                    <div class="absolute top-4 right-4">
+                                        <span class="price-tag">$1,299</span>
+                                    </div>
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Edición Limitada</span>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-display font-semibold text-gray-800 mb-2">Amor Eterno</h3>
+                                    <p class="text-gray-600 mb-4">Ramo premium con rosas rojas, lirios y orquídeas en presentación de lujo.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-500">✓ Incluye tarjeta personalizada</span>
+                                        <button onclick="addToCart('amor-eterno', 'Amor Eterno', 1299, 'resources/ramo-romantico.jpg')" class="bg-pink-400 text-white px-4 py-2 rounded-lg hover:bg-pink-500 transition-colors">
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden mx-4">
+                                <div class="relative">
+                                    <img src="resources/rosas-pink-arrangement.jpg" alt="Dulce Encanto" class="w-full h-64 object-cover">
+                                    <div class="absolute top-4 right-4">
+                                        <span class="price-tag">$649</span>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-display font-semibold text-gray-800 mb-2">Dulce Encanto</h3>
+                                    <p class="text-gray-600 mb-4">Arreglo delicado con rosas rosadas y blancas, perfecto para cumpleaños.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-500">✓ Ideal para regalo</span>
+                                        <button onclick="addToCart('dulce-encanto', 'Dulce Encanto', 649, 'resources/rosas-pink-arrangement.jpg')" class="bg-pink-400 text-white px-4 py-2 rounded-lg hover:bg-pink-500 transition-colors">
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden mx-4">
+                                <div class="relative">
+                                    <img src="resources/centro-mesa-pink.jpg" alt="Centro de Mesa" class="w-full h-64 object-cover">
+                                    <div class="absolute top-4 right-4">
+                                        <span class="price-tag">$799</span>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-display font-semibold text-gray-800 mb-2">Centro de Mesa Elegante</h3>
+                                    <p class="text-gray-600 mb-4">Hermoso centro de mesa con rosas y follaje, perfecto para eventos especiales.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-500">✓ Para eventos</span>
+                                        <button onclick="addToCart('centro-mesa', 'Centro de Mesa Elegante', 799, 'resources/centro-mesa-pink.jpg')" class="bg-pink-400 text-white px-4 py-2 rounded-lg hover:bg-pink-500 transition-colors">
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-20 bg-gradient-to-br from-pink-50 to-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-800 mb-4">
+                    Categorías <span class="text-green-600">Especiales</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Encuentra el arreglo perfecto para cada ocasión especial
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer" onclick="window.location.href='catalogo.html?categoria=aniversario'">
+                    <div class="relative h-48">
+                        <img src="resources/bouquet-roses.jpg" alt="Aniversario" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-display font-semibold">Aniversario</h3>
+                            <p class="text-sm opacity-90">Celebrando el amor</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer" onclick="window.location.href='catalogo.html?categoria=cumpleanos'">
+                    <div class="relative h-48">
+                        <img src="resources/ramo-elegante.jpg" alt="Cumpleaños" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-display font-semibold">Cumpleaños</h3>
+                            <p class="text-sm opacity-90">Felicidades especiales</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer" onclick="window.location.href='catalogo.html?categoria=amor'">
+                    <div class="relative h-48">
+                        <img src="resources/rosas-romanticas.jpg" alt="Día del Amor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-display font-semibold">San Valentín</h3>
+                            <p class="text-sm opacity-90">Para tu amor especial</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer" onclick="window.location.href='catalogo.html?categoria=mama'">
+                    <div class="relative h-48">
+                        <img src="resources/flores-mama.jpg" alt="Día de las Madres" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-xl font-display font-semibold">Día de las Madres</h3>
+                            <p class="text-sm opacity-90">Gratitud eterna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-800 mb-4">
+                    Lo que dicen <span class="text-green-600">nuestros clientes</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    La confianza de nuestros clientes es nuestra mayor inspiración
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card rounded-2xl p-8 text-center">
+                    <div class="mb-4">
+                        <div class="flex justify-center text-yellow-400 mb-4">
+                            <span>★★★★★</span>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "Excelente servicio y calidad. El arreglo llegó exactamente como lo solicité y mi esposa quedó encantada. 
+                            Sin duda volveré a comprar para nuestro aniversario."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <div class="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="font-bold text-pink-600">CM</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Carlos Mendoza</h4>
+                                <p class="text-sm text-gray-500">Cliente frecuente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rounded-2xl p-8 text-center">
+                    <div class="mb-4">
+                        <div class="flex justify-center text-yellow-400 mb-4">
+                            <span>★★★★★</span>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "La atención personalizada y el cuidado en cada detalle hacen que Aurea Lidia sea mi florería de confianza. 
+                            Siempre superan mis expectativas."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <div class="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="font-bold text-green-600">LR</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Lucía Rodríguez</h4>
+                                <p class="text-sm text-gray-500">Event planner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rounded-2xl p-8 text-center">
+                    <div class="mb-4">
+                        <div class="flex justify-center text-yellow-400 mb-4">
+                            <span>★★★★★</span>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "Para el cumpleaños de mi mamá pedí un arreglo personalizado y quedó maravillada. 
+                            La creatividad y frescura de las flores es incomparable."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="font-bold text-purple-600">AG</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Ana García</h4>
+                                <p class="text-sm text-gray-500">Primera compra</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="py-20 bg-gradient-to-br from-green-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-800 mb-6">
+                        Nuestra <span class="text-pink-400">Historia</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Fundada en 2008 por la familia Lidia, nuestra florería nació del amor por la belleza natural 
+                        y el deseo de hacer que cada momento especial sea inolvidable.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Con más de 15 años de experiencia, hemos tenido el privilegio de ser parte de miles de historias 
+                        de amor, celebraciones y momentos inolvidables. Cada arreglo es creado con pasión y dedicación.
+                    </p>
+                    <a href="nosotros.html" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform inline-block">
+                        Conocer Más
+                    </a>
+                </div>
+                <div class="relative">
+                    <img src="resources/florista-trabajando.jpg" alt="Nuestro equipo trabajando" class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-pink-400">15+</div>
+                            <div class="text-sm text-gray-600">Años de experiencia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-800 mb-6">
+                Mantente <span class="text-green-600">Conectado</span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Recibe ofertas especiales, consejos de cuidado de flores y aviso de nuevos arreglos antes que nadie.
+            </p>
+            <div class="max-w-md mx-auto">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Tu correo electrónico" class="flex-1 px-6 py-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent">
+                    <button class="btn-primary text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform">
+                        Suscribirse
+                    </button>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">
+                    Suscribete para recibir mas informacion y descuentos exlusivos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-display font-bold mb-4">
+                        <span class="text-pink-400">Aurea</span> <span class="text-green-400">Lidia</span>
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Florería premium en CDMX especializada en arreglos florales personalizados y entrega a domicilio.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/aurealidiaflorist" class="text-gray-300 hover:text-pink-400 transition-colors" target="_blank">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/floreriaaurealidia" class="text-gray-300 hover:text-pink-400 transition-colors" target="_blank">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.323c-.875.807-2.026 1.297-3.323 1.297z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Servicios</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="catalogo.html" class="hover:text-pink-400 transition-colors">Arreglos Florales</a></li>
+                        <li><a href="personalizar.html" class="hover:text-pink-400 transition-colors">Personalización</a></li>
+                        <li><a href="contacto.html" class="hover:text-pink-400 transition-colors">Entrega a Domicilio</a></li>
+                        <li><a href="nosotros.html" class="hover:text-pink-400 transition-colors">Eventos Especiales</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Información</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="nosotros.html" class="hover:text-pink-400 transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="contacto.html" class="hover:text-pink-400 transition-colors">Contacto</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-pink-400 transition-colors">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📍 Ciudad de México</p>
+                        <p>📞 +52 56 1868 9260</p>
+                        <p>📧 hola@aurealidiaflorist.com</p>
+                        <p>🕒 Lun-Dom: 8am-8pm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Aurea Lidia Florist. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
