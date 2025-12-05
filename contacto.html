@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="resources/favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto - Aurea Lidia Florist | Florería en CDMX</title>
@@ -93,8 +95,10 @@
       <span class="font-semibold text-lg">Total:</span>
       <span class="font-bold text-xl text-green-600" id="cartTotal">$0.00</span>
     </div>
-    <button onclick="proceedToCheckout()" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">Proceder al Pago</button>
-  </div>
+         <button onclick="proceedToWhatsApp()" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
+                Proceder por WhatsApp
+          </button>
+    </div>
 </div>
 
 <!-- Navigation (reutilizado) -->
@@ -223,6 +227,18 @@
     const total=cart.reduce((s,i)=>s+i.price*i.quantity,0);
     alert(`Redirigiendo al pago...\nTotal: $${total.toLocaleString()} MXN\nGracias por confiar en Aurea Lidia Florist.`);
   }
+  // ------------ WhatsApp con carrito ------------
+  function proceedToWhatsApp() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart.length === 0) {
+    alert('Tu carrito está vacío');
+    return;
+  }
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  const items = cart.map(i => `• ${i.quantity}× ${i.name}`).join('%0A');
+  const msg = `Hola, quiero confirmar mi pedido:%0A${items}%0ATotal: $${total.toLocaleString()} MXN`;
+  window.open(`https://wa.me/525618689260?text=${msg}`, '_blank');
+}
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
   document.addEventListener('click',e=>{
     const s=document.getElementById('cartSidebar'), b=document.querySelector('button[onclick="toggleCart()"]');

@@ -154,7 +154,7 @@ function updateCartDisplay() {
     const cartCount = document.getElementById('cartCount');
     const cartItems = document.getElementById('cartItems');
     const cartFooter = document.getElementById('cartFooter');
-    const cartTotal = document.getElementById('cartTotal');
+    let cartTotal = document.getElementById('cartTotal');
     
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -227,6 +227,18 @@ function proceedToCheckout() {
     
     // In a real application, this would redirect to a checkout page
     alert('Redirigiendo al proceso de pago...\n\nTotal: $' + cartTotal.toLocaleString() + ' MXN\n\nGracias por tu confianza en Aurea Lidia Florist!');
+}
+
+function proceedToWhatsApp() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart.length === 0) {
+    alert('Tu carrito está vacío');
+    return;
+  }
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  const items = cart.map(i => `• ${i.quantity}× ${i.name}`).join('%0A');
+  const msg = `Hola, quiero confirmar mi pedido:%0A${items}%0ATotal: $${total.toLocaleString()} MXN`;
+  window.open(`https://wa.me/525618689260?text=${msg}`, '_blank');
 }
 
 function showCartNotification(productName) {
@@ -329,7 +341,7 @@ function subscribeNewsletter(email) {
 
 // WhatsApp integration
 function openWhatsApp(message = '') {
-    const phoneNumber = '525512345678'; // Replace with actual phone number
+    const phoneNumber = '525618689260'; // Replace with actual phone number
     const defaultMessage = message || '¡Hola! Estoy interesado en sus arreglos florales. ¿Me pueden ayudar?';
     const encodedMessage = encodeURIComponent(defaultMessage);
     
@@ -421,6 +433,7 @@ window.AureaLidia = {
     toggleCart,
     closeCart,
     proceedToCheckout,
+    proceedToWhatsApp,
     openWhatsApp,
     filterProducts,
     subscribeNewsletter,

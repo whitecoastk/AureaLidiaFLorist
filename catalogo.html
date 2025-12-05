@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Arreglos Florales - Aurea Lidia Florist | Ramos y Centros de Mesa</title>
@@ -167,9 +169,9 @@
                 <span class="font-semibold text-lg">Total:</span>
                 <span class="font-bold text-xl text-green-600" id="cartTotal">$0.00</span>
             </div>
-            <button onclick="proceedToCheckout()" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
-                Proceder al Pago
-            </button>
+            <button onclick="proceedToWhatsApp()" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
+                Proceder por WhatsApp
+            </button>
         </div>
     </div>
 
@@ -422,7 +424,7 @@
                 image: 'resources/ramo-romantico.jpg',
                 category: 'ramos',
                 occasion: 'san-valentin',
-                description: 'Ramo premium con rosas rojas, lirios y orquídeas en presentación de lujo.',
+                description: 'Ramo premium con rosas rojas.',
                 popular: true,
                 badge: 'Edición Limitada'
             },
@@ -439,7 +441,7 @@
             {
                 id: 'centro-mesa',
                 name: 'Centro de Mesa Elegante',
-                price: 799,
+                price: 999,
                 image: 'resources/centro-mesa-pink.jpg',
                 category: 'centros',
                 occasion: 'aniversario',
@@ -449,18 +451,18 @@
             {
                 id: 'bouquet-rosas-rojas',
                 name: 'Bouquet de Rosas Rojas',
-                price: 999,
+                price: 499,
                 image: 'resources/bouquet-roses.jpg',
                 category: 'ramos',
                 occasion: 'san-valentin',
-                description: 'Clásico bouquet de 18 rosas rojas con verde ornamental y envoltura premium.',
+                description: 'Clásico bouquet de 24 rosas rojas con verde ornamental y envoltura premium.',
                 popular: true,
                 badge: 'Perfecto para San Valentín'
             },
             {
                 id: 'ramo-elegante-blanco',
                 name: 'Ramo Elegante Blanco',
-                price: 749,
+                price: 1349,
                 image: 'resources/ramo-elegante.jpg',
                 category: 'ramos',
                 occasion: 'cumpleanos',
@@ -480,14 +482,59 @@
             {
                 id: 'flores-mama',
                 name: 'Para Mamá',
-                price: 849,
+                price: 299,
                 image: 'resources/flores-mama.jpg',
                 category: 'especiales',
                 occasion: 'mama',
                 description: 'Arreglo especial para el Día de las Madres con sus flores favoritas.',
                 popular: true,
                 badge: 'Día de las Madres'
-            }
+            },
+            {
+                id: 'Ramo de rosas grande',
+                name: 'Ramo de rosas grande',
+                price: 1199,
+                image: 'resources/Ramo-Cincuenta2Colores.jpg',
+                category: 'ramos', 
+                occasion: 'cumpleanos', 
+                description: 'Ramo de 50 rosas de 2 colores, perfecto para esa persona ideal.',
+                popular: false, 
+                badge: '' 
+            },
+            {
+                id: 'Florero Rosas y Lili',
+                name: 'Florero Grande',
+                price: 1799,
+                image: 'resources/Florero-GrandeACAROS.jpg',
+                category: 'centros', // o 'centros', 'especiales', 'plantas'
+                occasion: 'aniversario', // o 'aniversario', 'san-valentin', 'mama'
+                description: 'Florero con Lirios y rosas ideal para aniversario.',
+                popular: false, // o true si querés que aparezca como "Más vendido"
+                badge: '' // o 'Edición Limitada', 'Día de las Madres', etc.
+            },  
+            {
+                id: 'Ramo 50 gerberas',
+                name: 'Ramo de 50 gerberas',
+                price: 1399,
+                image: 'resources/Ramo-Gerberas-G.jpg',
+                category: 'especiales', // o 'centros', 'especiales', 'plantas'
+                occasion: 'aniversario', // o 'aniversario', 'san-valentin', 'mama'
+                description: 'Ramo de 50 rosas de 2 colores, perfecto para esa persona ideal.',
+                popular: false, // o true si querés que aparezca como "Más vendido"
+                badge: '' // o 'Edición Limitada', 'Día de las Madres', etc.
+            },  
+            {
+                id: 'Ramo de novia lisianthus',
+                name: 'Ramo de Novia blanco',
+                price: 899,
+                image: 'resources/Ramo-De_Novia.jpg',
+                category: 'especiales', // o 'centros', 'especiales', 'plantas'
+                occasion: 'boda', // o 'aniversario', 'san-valentin', 'mama'
+                description: 'Ramo de novia con lisianthus, ideal para quien busca elegancia y belleza.',
+                popular: false, // o true si querés que aparezca como "Más vendido"
+                badge: '' // o 'Edición Limitada', 'Día de las Madres', etc.
+            },
+            
         ];
 
         let currentProducts = [...products];
@@ -762,6 +809,19 @@
             }
             
             alert('Redirigiendo al proceso de pago...\n\nTotal: $' + total.toLocaleString() + ' MXN\n\nGracias por tu confianza en Aurea Lidia Florist!');
+        }
+        // ------------ WhatsApp con carrito ------------
+        function proceedToWhatsApp() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+
+            const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+            const items = cart.map(i => `• ${i.quantity}× ${i.name}`).join('%0A');
+            const msg = `Hola, quiero confirmar mi pedido:%0A${items}%0ATotal: $${total.toLocaleString()} MXN`;
+            window.open(`https://wa.me/525618689260?text=${msg}`, '_blank');
         }
 
         function showCartNotification(productName) {
