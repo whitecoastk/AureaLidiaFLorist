@@ -31,6 +31,19 @@
 
     
     <style>
+        .price-filter:focus, 
+           button[onclick*="filterByPrice"]:focus {
+            background-color: #F3F4F6 !important; /* bg-gray-100 */
+            color: #374151 !important; /* text-gray-700 */
+            outline: none !important;
+        }
+        img[data-lazy] {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        img.loaded {
+            opacity: 1;
+        }
         :root {
             --primary-white: #FFFFFF;
             --secondary-pink: #F8E8E8;
@@ -257,19 +270,19 @@
                         <div class="mb-6">
                             <h4 class="font-semibold text-gray-700 mb-3">Categoría</h4>
                             <div class="space-y-2">
-                                <button onclick="filterProducts('todos')" class="filter-btn w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-category="todos">
+                                <button onclick="filterProducts('todos')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-category="todos">
                                     Todos
                                 </button>
-                                <button onclick="filterProducts('ramos')" class="filter-btn w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-category="ramos">
+                                <button onclick="filterProducts('ramos')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-category="ramos">
                                     Ramos
                                 </button>
-                                <button onclick="filterProducts('centros')" class="filter-btn w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-category="centros">
+                                <button onclick="filterProducts('centros')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-category="centros">
                                     Centros de Mesa
                                 </button>
-                                <button onclick="filterProducts('especiales')" class="filter-btn w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-category="especiales">
+                                <button onclick="filterProducts('especiales')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-category="especiales">
                                     Especiales
                                 </button>
-                                <button onclick="filterProducts('plantas')" class="filter-btn w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-category="plantas">
+                                <button onclick="filterProducts('plantas')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-category="plantas">
                                     Plantas
                                 </button>
                             </div>
@@ -279,36 +292,21 @@
                         <div class="mb-6">
                             <h4 class="font-semibold text-gray-700 mb-3">Precio</h4>
                             <div class="space-y-2">
-                                <button onclick="filterByPrice('all')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-price="all">
+                                <button onclick="filterByPrice('all'); this.blur()" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-price="all"
+                                    type="button">
                                     Todos los precios
                                 </button>
-                                <button onclick="filterByPrice('0-500')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-price="0-500">
+                                <button onclick="filterByPrice('0-500'); this.blur()" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-price="0-500"
+                                    type="button">
                                     $0 - $500
                                 </button>
-                                <button onclick="filterByPrice('500-1000')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-price="500-1000">
+                                <button onclick="filterByPrice('500-1000'); this.blur()" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-price="500-1000"
+                                    type="button">
                                     $500 - $1,000
                                 </button>
-                                <button onclick="filterByPrice('1000+')" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-price="1000+">
+                                <button onclick="filterByPrice('1000+'); this.blur()" class="price-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white focus:outline-none active:bg-pink-400 active:text-white transition-all duration-200" data-price="1000+"
+                                    type="button">
                                     $1,000+
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Occasion Filter -->
-                        <div class="mb-6">
-                            <h4 class="font-semibold text-gray-700 mb-3">Ocasión</h4>
-                            <div class="space-y-2">
-                                <button onclick="filterByOccasion('aniversario')" class="occasion-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-occasion="aniversario">
-                                    Aniversario
-                                </button>
-                                <button onclick="filterByOccasion('cumpleanos')" class="occasion-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-occasion="cumpleanos">
-                                    Cumpleaños
-                                </button>
-                                <button onclick="filterByOccasion('san-valentin')" class="occasion-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-occasion="san-valentin">
-                                    San Valentín
-                                </button>
-                                <button onclick="filterByOccasion('mama')" class="occasion-filter w-full text-left px-3 py-2 rounded-lg bg-gray-100 hover:bg-pink-400 hover:text-white transition-colors" data-occasion="mama">
-                                    Día de las Madres
                                 </button>
                             </div>
                         </div>
