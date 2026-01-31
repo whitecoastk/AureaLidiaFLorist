@@ -104,32 +104,51 @@ function displayProducts() {
   }
 }
 
-// FILTRO POR CATEGORÍA - No manipula clases visuales
+// CATEGORÍAS
 function filterProducts(cat) {
+  // Pintar botón activo
+  document.querySelectorAll('[data-category]').forEach(btn => {
+    btn.classList.remove('bg-pink-400', 'text-white');
+    btn.classList.add('bg-gray-100');
+  });
+  const active = document.querySelector(`[data-category="${cat}"]`);
+  if (active) {
+    active.classList.remove('bg-gray-100');
+    active.classList.add('bg-pink-400', 'text-white');
+  }
+
+  // Filtrar productos
   currentProducts = cat === 'todos'
     ? [...products]
     : products.filter(p => p.category === cat);
-
   currentPage = 1;
   displayProducts();
 }
 
-// FILTRO POR PRECIO - No manipula clases visuales (VERSIÓN ÚNICA)
+// PRECIOS
 function filterByPrice(range) {
-  switch(range) {
+  // Pintar botón activo
+  document.querySelectorAll('[data-price]').forEach(btn => {
+    btn.classList.remove('bg-pink-400', 'text-white');
+    btn.classList.add('bg-gray-100');
+  });
+  const active = document.querySelector(`[data-price="${range}"]`);
+  if (active) {
+    active.classList.remove('bg-gray-100');
+    active.classList.add('bg-pink-400', 'text-white');
+  }
+
+  // Filtrar productos
+  switch (range) {
     case '0-500':
-      currentProducts = products.filter(product => product.price <= 500);
-      break;
+      currentProducts = products.filter(p => p.price <= 500); break;
     case '500-1000':
-      currentProducts = products.filter(product => product.price > 500 && product.price <= 1000);
-      break;
+      currentProducts = products.filter(p => p.price > 500 && p.price <= 1000); break;
     case '1000+':
-      currentProducts = products.filter(product => product.price > 1000);
-      break;
+      currentProducts = products.filter(p => p.price > 1000); break;
     default:
       currentProducts = [...products];
   }
-  
   currentPage = 1;
   displayProducts();
 }
@@ -159,5 +178,6 @@ function loadMoreProducts() {
   currentPage++;
   displayProducts();
 }
+
 
 document.addEventListener('DOMContentLoaded', loadProducts);
