@@ -57,6 +57,16 @@
             box-shadow: 0 10px 25px rgba(212, 165, 165, 0.4);
         }
         
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+        
         .form-step {
             display: none;
         }
@@ -218,7 +228,7 @@
 </head>
 <body>
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/525512345678" class="whatsapp-float bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors" target="_blank">
+    <a href="https://wa.me/525618689260" class="whatsapp-float bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors" target="_blank">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.03 22l5.25-1.38c1.45.79 3.08 1.21 4.76 1.21 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zM12.04 19.5c-1.52 0-2.98-.45-4.23-1.29l-.3-.18-3.12.82.83-3.04-.2-.31c-.87-1.34-1.33-2.9-1.33-4.52 0-4.67 3.8-8.47 8.47-8.47s8.47 3.8 8.47 8.47-3.8 8.47-8.47 8.47z"/>
             <path d="M12.04 6.5c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5zm0 7.5c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
@@ -250,7 +260,7 @@
             </div>
             <button onclick="proceedToWhatsApp()" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-semibold">
                  Proceder por WhatsApp
-            </button>
+      </button>
         </div>
     </div>
 
@@ -584,8 +594,11 @@
                             <button type="button" onclick="nextStep()" id="nextBtn" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">
                                 Siguiente
                             </button>
-                            <button type="submit" id="submitBtn" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold" style="display: none;">
-                                Enviar Pedido
+                            <button type="button" onclick="sendToWhatsApp()" id="submitBtn" class="btn-whatsapp text-white px-8 py-3 rounded-lg font-semibold flex items-center space-x-2" style="display: none;">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.03 22l5.25-1.38c1.45.79 3.08 1.21 4.76 1.21 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91zM12.04 19.5c-1.52 0-2.98-.45-4.23-1.29l-.3-.18-3.12.82.83-3.04-.2-.31c-.87-1.34-1.33-2.9-1.33-4.52 0-4.67 3.8-8.47 8.47-8.47s8.47 3.8 8.47 8.47-3.8 8.47-8.47 8.47z"/>
+                                </svg>
+                                <span>Enviar Pedido por WhatsApp</span>
                             </button>
                         </div>
                     </form>
@@ -597,10 +610,10 @@
                         <div class="bg-white rounded-2xl shadow-lg p-6">
                             <h3 class="text-xl font-display font-semibold text-gray-800 mb-6">Resumen de tu Pedido</h3>
                             
-                            <div class="space-y-4 mb-6">
+                            <div class="space-y-4 mb-6 text-sm">
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Flores seleccionadas:</span>
-                                    <span id="selectedFlowers" class="font-semibold">-</span>
+                                    <span class="text-gray-600">Flores:</span>
+                                    <span id="selectedFlowers" class="font-semibold text-right max-w-[60%]">-</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Tamaño:</span>
@@ -608,7 +621,7 @@
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Colores:</span>
-                                    <span id="selectedColors" class="font-semibold">-</span>
+                                    <span id="selectedColors" class="font-semibold text-right max-w-[60%]">-</span>
                                 </div>
                             </div>
                             
@@ -619,9 +632,13 @@
                             </div>
                             
                             <div class="mt-6">
-                                <button onclick="addCustomToCart()" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-                                    Agregar al Carrito
+                                <button onclick="sendSummaryToWhatsApp()" class="w-full btn-whatsapp text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all flex items-center justify-center space-x-2">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.03 22l5.25-1.38c1.45.79 3.08 1.21 4.76 1.21 5.46 0 9.91-4.45 9.91-9.91s-4.45-9.91-9.91-9.91z"/>
+                                    </svg>
+                                    <span>Pasar a WhatsApp</span>
                                 </button>
+                                <p class="text-xs text-gray-500 text-center mt-2">Te redirigiremos con tu selección actual</p>
                             </div>
                         </div>
                     </div>
@@ -693,6 +710,9 @@
     </footer>
 
     <script>
+        // Configuración
+        const WHATSAPP_NUMBER = "525618689260"; // Cambia este número por el real
+        
         // Form state
         let currentStep = 1;
         let formData = {
@@ -785,12 +805,125 @@
             document.getElementById('newsletter').addEventListener('change', function() {
                 formData.newsletter = this.checked;
             });
+        }
 
-            // Form submission
-            document.getElementById('customizationForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                submitForm();
+        // Generar mensaje de WhatsApp
+        function generateWhatsAppMessage(includeContact = false) {
+            const sizeNames = {
+                'pequeno': 'Pequeño (12-15 flores)',
+                'mediano': 'Mediano (18-24 flores)',
+                'grande': 'Grande (30-36 flores)',
+                'extra-grande': 'Extra Grande (40+ flores)'
+            };
+            
+            const occasionNames = {
+                'aniversario': 'Aniversario',
+                'cumpleanos': 'Cumpleaños',
+                'san-valentin': 'San Valentín',
+                'mama': 'Día de las Madres',
+                'graduacion': 'Graduación',
+                'boda': 'Boda',
+                'condolencias': 'Condolencias',
+                'otro': 'Otro'
+            };
+            
+            let totalPrice = calculateTotalPrice();
+            
+            let message = `¡Hola! Quiero hacer un pedido personalizado de flores \n\n`;
+            message += `*RESUMEN DEL PEDIDO:*\n`;
+            message += `• Flores seleccionadas: ${formData.flowers.length > 0 ? formData.flowers.join(', ') : 'No seleccionadas'}\n`;
+            message += `• Tamaño: ${formData.size ? sizeNames[formData.size] : 'No seleccionado'}\n`;
+            message += `• Colores: ${formData.colors.length > 0 ? formData.colors.join(', ') : 'No seleccionados'}\n`;
+            
+            if (formData.message) {
+                message += `• Mensaje para tarjeta: "${formData.message}"\n`;
+            }
+            
+            if (formData.deliveryDate) {
+                message += `• Fecha de entrega: ${formData.deliveryDate}\n`;
+            }
+            
+            if (formData.occasion) {
+                message += `• Ocasión: ${occasionNames[formData.occasion]}\n`;
+            }
+            
+            if (formData.comments) {
+                message += `• Comentarios: ${formData.comments}\n`;
+            }
+            
+            message += `\n*PRECIO TOTAL: $${totalPrice.toLocaleString()} MXN*\n`;
+            
+            if (includeContact) {
+                message += `\n*DATOS DE CONTACTO:*\n`;
+                message += `• Nombre: ${formData.name}\n`;
+                message += `• Teléfono: ${formData.phone}\n`;
+                message += `• Correo: ${formData.email}\n`;
+                message += `• Dirección de entrega: ${formData.address}\n`;
+                
+                if (formData.newsletter) {
+                    message += `• Desea recibir newsletter: Sí\n`;
+                }
+            }
+            
+            message += `\nPor favor confirmen disponibilidad y datos para la entrega. ¡Gracias! `;
+            
+            return encodeURIComponent(message);
+        }
+
+        // Calcular precio total
+        function calculateTotalPrice() {
+            let totalPrice = basePrice + additionalPrice;
+            
+            // Add flower prices
+            document.querySelectorAll('.flower-option.selected').forEach(option => {
+                const priceText = option.querySelector('.text-pink-400').textContent;
+                const flowerPrice = parseInt(priceText.replace('+$', ''));
+                totalPrice += flowerPrice;
             });
+            
+            return totalPrice;
+        }
+
+        // Enviar resumen a WhatsApp (botón lateral)
+        function sendSummaryToWhatsApp() {
+            if (formData.flowers.length === 0 || !formData.size || formData.colors.length === 0) {
+                alert('Por favor completa al menos los primeros 3 pasos (Flores, Tamaño y Colores) antes de enviar a WhatsApp');
+                return;
+            }
+            
+            const message = generateWhatsAppMessage(false);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Enviar pedido completo a WhatsApp (botón final)
+        function sendToWhatsApp() {
+            if (!validateCurrentStep()) return;
+            
+            const message = generateWhatsAppMessage(true);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Opcional: Guardar en localStorage también
+            saveOrderToLocalStorage();
+        }
+
+        // Guardar en localStorage (backup)
+        function saveOrderToLocalStorage() {
+            let totalPrice = calculateTotalPrice();
+            const customProduct = {
+                id: 'custom-' + Date.now(),
+                name: `Arreglo Personalizado - ${formData.name}`,
+                price: totalPrice,
+                image: 'resources/hero-flores.jpg',
+                quantity: 1,
+                customization: formData,
+                date: new Date().toISOString()
+            };
+            
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(customProduct);
+            localStorage.setItem('cart', JSON.stringify(cart));
         }
 
         function updateFlowerSelection() {
@@ -812,15 +945,7 @@
         }
 
         function updatePricePreview() {
-            let totalPrice = basePrice + additionalPrice;
-            
-            // Add flower prices
-            document.querySelectorAll('.flower-option.selected').forEach(option => {
-                const priceText = option.querySelector('.text-pink-400').textContent;
-                const flowerPrice = parseInt(priceText.replace('+$', ''));
-                totalPrice += flowerPrice;
-            });
-            
+            let totalPrice = calculateTotalPrice();
             document.getElementById('totalPrice').textContent = '$' + totalPrice.toLocaleString();
         }
 
@@ -904,48 +1029,6 @@
                     break;
             }
             return true;
-        }
-
-        function submitForm() {
-            if (!validateCurrentStep()) return;
-            
-            // Calculate final price
-            let totalPrice = basePrice + additionalPrice;
-            document.querySelectorAll('.flower-option.selected').forEach(option => {
-                const priceText = option.querySelector('.text-pink-400').textContent;
-                const flowerPrice = parseInt(priceText.replace('+$', ''));
-                totalPrice += flowerPrice;
-            });
-            
-            // Create custom product
-            const customProduct = {
-                id: 'custom-' + Date.now(),
-                name: `Arreglo Personalizado - ${formData.name}`,
-                price: totalPrice,
-                image: 'resources/hero-flores.jpg',
-                quantity: 1,
-                customization: formData
-            };
-            
-            // Add to cart
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(customProduct);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Show success message
-            alert(`¡Pedido personalizado creado con éxito!\n\nTotal: $${totalPrice.toLocaleString()} MXN\n\nHemos recibido tu solicitud y nos pondremos en contacto contigo para confirmar los detalles.`);
-            
-            // Redirect to catalog
-            window.location.href = 'catalogo.html';
-        }
-
-        function addCustomToCart() {
-            if (formData.flowers.length === 0 || !formData.size || formData.colors.length === 0) {
-                alert('Por favor completa al menos los primeros 3 pasos antes de agregar al carrito');
-                return;
-            }
-            
-            submitForm();
         }
 
         // Cart functionality (reuse from main.js)

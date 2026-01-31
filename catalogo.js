@@ -173,4 +173,31 @@ function loadMoreProducts() {
   displayProducts();
 }
 
+function setActiveCategory(btn) {
+  document
+    .querySelectorAll('[data-category]')
+    .forEach(b => b.classList.remove('filter-active'));
+
+  btn.classList.add('filter-active');
+}
+
+
+/* ---------------  helpers para móvil  --------------- */
+function forceRepaint(el) {
+  // fuerza al navegador a pintar de nuevo
+  el.style.display = 'none';
+  el.offsetHeight;          // lectura que fuerza reflow
+  el.style.display = '';
+}
+
+function onFilterClick(btn, fn, ...args) {
+  // 1. ejecuta la lógica
+  fn(...args);
+
+  // 2. quita el estado visual instantáneo
+  btn.blur && btn.blur();
+
+  // 3. fuerza repaint en móviles
+  setTimeout(() => forceRepaint(btn), 50);
+}
 document.addEventListener('DOMContentLoaded', loadProducts);
