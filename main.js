@@ -89,10 +89,27 @@ function closeCart() {
 
 function showCartNotification(name) {
   const n = document.createElement('div');
-  n.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded z-50';
-  n.textContent = `Agregado: ${name}`;
+  n.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2 transform translate-x-full opacity-0 transition-all duration-300 ease-out';
+  
+  n.innerHTML = `
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+    <span class="font-medium">Agregado: ${name}</span>
+  `;
+  
   document.body.appendChild(n);
-  setTimeout(() => n.remove(), 2500);
+  
+  // Animación de entrada
+  requestAnimationFrame(() => {
+    n.classList.remove('translate-x-full', 'opacity-0');
+  });
+  
+  // Animación de salida
+  setTimeout(() => {
+    n.classList.add('translate-x-full', 'opacity-0');
+    setTimeout(() => n.remove(), 300);
+  }, 2200);
 }
 
 // ---------- WHATSAPP ----------
