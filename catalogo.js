@@ -104,51 +104,45 @@ function displayProducts() {
   }
 }
 
-// CATEGORÍAS
+// FILTRO POR CATEGORÍA - No manipula clases visuales (VERSIÓN ÚNICA)
 function filterProducts(cat) {
-  // Pintar botón activo
-  document.querySelectorAll('[data-category]').forEach(btn => {
-    btn.classList.remove('bg-pink-400', 'text-white');
-    btn.classList.add('bg-gray-100');
-  });
-  const active = document.querySelector(`[data-category="${cat}"]`);
-  if (active) {
-    active.classList.remove('bg-gray-100');
-    active.classList.add('bg-pink-400', 'text-white');
+  switch(cat) {
+    case 'ramos':
+      currentProducts = products.filter(product => product.category === 'ramos');
+      break;
+    case 'centros':
+      currentProducts = products.filter(product => product.category === 'centros');
+      break;
+    case 'especiales':
+      currentProducts = products.filter(product => product.category === 'especiales');
+      break;
+    case 'plantas':
+      currentProducts = products.filter(product => product.category === 'plantas');
+      break;
+    default:
+      currentProducts = [...products];
   }
-
-  // Filtrar productos
-  currentProducts = cat === 'todos'
-    ? [...products]
-    : products.filter(p => p.category === cat);
+  
   currentPage = 1;
   displayProducts();
 }
 
-// PRECIOS
+// FILTRO POR PRECIO - No manipula clases visuales (VERSIÓN ÚNICA)
 function filterByPrice(range) {
-  // Pintar botón activo
-  document.querySelectorAll('[data-price]').forEach(btn => {
-    btn.classList.remove('bg-pink-400', 'text-white');
-    btn.classList.add('bg-gray-100');
-  });
-  const active = document.querySelector(`[data-price="${range}"]`);
-  if (active) {
-    active.classList.remove('bg-gray-100');
-    active.classList.add('bg-pink-400', 'text-white');
-  }
-
-  // Filtrar productos
-  switch (range) {
+  switch(range) {
     case '0-500':
-      currentProducts = products.filter(p => p.price <= 500); break;
+      currentProducts = products.filter(product => product.price <= 500);
+      break;
     case '500-1000':
-      currentProducts = products.filter(p => p.price > 500 && p.price <= 1000); break;
+      currentProducts = products.filter(product => product.price > 500 && product.price <= 1000);
+      break;
     case '1000+':
-      currentProducts = products.filter(p => p.price > 1000); break;
+      currentProducts = products.filter(product => product.price > 1000);
+      break;
     default:
       currentProducts = [...products];
   }
+  
   currentPage = 1;
   displayProducts();
 }
@@ -178,6 +172,5 @@ function loadMoreProducts() {
   currentPage++;
   displayProducts();
 }
-
 
 document.addEventListener('DOMContentLoaded', loadProducts);
