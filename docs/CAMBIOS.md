@@ -37,13 +37,13 @@ Los IDs de analítica usados en tests están aislados en memoria con proveedores
 
 ## Limitaciones de verificación
 
-Los envíos a WhatsApp se prueban hasta el mensaje preparado, sin enviar pedidos reales. No se confirma titularidad del número, atención operativa, disponibilidad, precios vigentes, costos reales de entrega ni los identificadores/cuentas de medición. No hay datos de campo de Core Web Vitals ni métricas de ventas para prometer mejoras.
+Los envíos a WhatsApp se prueban hasta el mensaje preparado, sin enviar pedidos reales. El propietario confirmó el número oficial; no se verifican atención operativa, disponibilidad, precios vigentes, costos reales de entrega ni los identificadores/cuentas de medición. No hay datos de campo de Core Web Vitals ni métricas de ventas para prometer mejoras.
 
-El control de publicación queda bloqueado deliberadamente hasta confirmar WhatsApp y completar/revisar privacidad. La titularidad y políticas del negocio no pueden resolverse inventando datos.
+El propietario confirmó WhatsApp y aportó los datos necesarios para el aviso; el control de configuración mínima ya pasa. El aviso y su procedimiento operativo se documentan en `docs/PRIVACIDAD.md`. El propietario informó que revisó el despliegue; no se publicó ni fusionó automáticamente.
 
 ## Resultado final de revisión local
 
-- Build correcto y 33 pruebas automatizadas aprobadas. Sin dependencias npm.
+- Build correcto y 35 pruebas automatizadas aprobadas, incluyendo bloqueo ante identidad o domicilio incompletos y protección de los datos del responsable frente a inyección HTML. Sin dependencias npm.
 - Navegación móvil operativa y filtros combinados de tipo/presupuesto, así como ocasión/presupuesto/flor/color. Se corrigió también el servidor local que inicialmente no servía los JS de raíz; la revisión final sí ejecuta todos los scripts.
 - Flujo de ficha → solicitud CDMX → errores de entrega → resumen válido → enlace codificado. No se abrió ni envió un pedido real a WhatsApp.
 - Flujo personalizado con municipio de Edomex y horario flexible; marca Jardín Eterno y campaña conservadas en el mensaje. Referencia no publicada bloquea el formulario y ofrece volver a elegir.

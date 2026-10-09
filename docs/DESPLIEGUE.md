@@ -4,10 +4,10 @@ El despliegue sigue pendiente; no se publicaron cambios automáticamente. Esta v
 
 ## Antes de publicar
 
-1. Confirma con el negocio el WhatsApp `525618689260` y marca `whatsappVerified=true`. Se verificó formato y consistencia predominante con el sitio existente, no titularidad del número. No envíes pedidos de prueba a clientes.
-2. Completa el responsable, domicilio del responsable, contacto y procedimiento de derechos en `privacy` y revisa el aviso integral, finalidades, conservación operativa y políticas comerciales con quien corresponda. `privacy.reviewed=true` debe representar una revisión real. El control técnico no certifica cumplimiento legal.
+1. WhatsApp `525618689260` confirmado por el propietario; `whatsappVerified=true`. Si cambia, verificar nuevamente. No envíes pedidos de prueba a clientes.
+2. Aviso preparado por encargo del propietario con identidad y domicilio del negocio proporcionados; contacto de privacidad por WhatsApp. Ver `docs/PRIVACIDAD.md` para mantener el texto y atender solicitudes. `privacy.reviewed=true` representa revisión del texto con estos datos, no una certificación legal ni verificación de la operación.
 3. Revisa los 20 productos y precios importados. “Centro de Mesa Elegante” conserva $999 desde Sheets; se retiró la discrepancia del botón de $799. Confirma ese precio y cualquier cambio comercial.
-4. Confirma fotografías, descripciones, cobertura, políticas de cambios/cancelación y perfiles sociales; no publiques ejemplos ni datos pendientes como reales. No hay dirección comercial pública ni horarios inventados.
+4. Mantén vigentes fotografías, descripciones, cobertura, políticas de cambios/cancelación y perfiles sociales; no publiques ejemplos ni datos pendientes como reales. El domicilio confirmado figura en privacidad; no se añadieron horarios.
 5. Si quieres medir campañas, configura los IDs reales y prueba consentimiento, eventos y ausencia de duplicación en las cuentas de GA4/Meta. Si están vacíos, el sitio funciona sin medición.
 
 Ejecuta:
@@ -18,7 +18,7 @@ node --test tests/*.test.cjs
 node scripts/check-release.cjs
 ```
 
-El último comando debe terminar sin pendientes de configuración. Actualmente falla intencionalmente por WhatsApp y aviso de privacidad. No cambia ni publica archivos en el hosting.
+El último comando debe terminar sin pendientes de configuración; ahora pasa con los datos confirmados y el aviso preparado. No cambia ni publica archivos en el hosting. El propietario informó que revisó la configuración de despliegue el 8 de octubre de 2026; esta declaración no equivale a un despliegue ejecutado por el agente.
 
 El control comprueba también las huellas de fuentes y archivos públicos: si editaste datos, plantillas o un HTML generado después del build, exige regenerar. En una copia/checkout nuevo puede ser necesario ejecutar build por normalización de finales de línea.
 

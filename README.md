@@ -52,7 +52,7 @@ Los cambios permanecen locales hasta que despliegues explícitamente. Para traba
 node scripts/check-release.cjs
 ```
 
-Este control debe fallar ahora: falta confirmar que **525618689260** es el WhatsApp oficial y completar/revisar el aviso de privacidad. GA4 y Meta están vacíos y desactivados. Los precios de la hoja se conservan como referencias; confirma su vigencia comercial y las descripciones antes de publicar. No se han añadido reseñas, stock, promociones ni nuevas tarifas.
+El propietario confirmó **525618689260** como WhatsApp oficial y proporcionó identidad y domicilio del negocio para el aviso de privacidad. El control de configuración mínima ya pasa. La configuración de despliegue fue revisada por el propietario; no se ha publicado automáticamente. Consulta `docs/PRIVACIDAD.md` para atender solicitudes de datos y mantener el aviso. GA4 y Meta están vacíos y desactivados. Los precios de la hoja se conservan como referencias. No se han añadido reseñas, stock, promociones ni nuevas tarifas.
 
 La fecha y franjas horarias son preferencias; no reflejan capacidad operativa comprobada. Las etiquetas iniciales de flores y colores proceden exclusivamente de los nombres/descripciones originales; valida su vigencia. Algunas ocasiones aún no tienen referencias y no hay variaciones definidas.
 

@@ -3,7 +3,7 @@ const config=require('../site.config.json');
 const {validateProducts}=require('../assets/core.js');
 const issues=[];
 if(!config.whatsappVerified)issues.push('Confirmar que '+config.whatsapp+' es el WhatsApp oficial y marcar whatsappVerified=true.');
-if(!config.privacy.reviewed||!config.privacy.controller||!config.privacy.contactEmail||!config.privacy.rightsContact||!config.privacy.controllerAddress)issues.push('Completar y revisar el aviso de privacidad del negocio.');
+if(!require('./privacy.cjs').privacyReady(config))issues.push('Completar identidad y domicilio del responsable y confirmar el aviso de privacidad del negocio.');
 if(config.ga4Id&&!/^G-[A-Z0-9]+$/.test(config.ga4Id))issues.push('Identificador GA4 inválido.');
 if(config.metaPixelId&&!/^\d{5,25}$/.test(config.metaPixelId))issues.push('Identificador Meta Pixel inválido.');
 validateProducts(require('../data/products.json'));
