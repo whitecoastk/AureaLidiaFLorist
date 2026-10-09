@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aurealidiaflorist.com/sitemap.xml
