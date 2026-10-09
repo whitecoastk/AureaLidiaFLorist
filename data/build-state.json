@@ -3,8 +3,10 @@
     "site.config.json": "84acf89bb781ef454ce88d8f599783c8284e9b15cff478eecfe1ecf178f0da5b",
     "data/products.json": "264433ba80dfb6949e2c0f9c9c9a9d300b6628bcb8900a4b9f18ec3a4570fb22",
     "data/images.json": "e387b3a6169001100b7035896da55e83add6b515206d3175b5e5a096056d70a1",
-    "scripts/build.cjs": "333ef6c3d0af63cd36f5db7dfcde2edfbfeac347914f7fbac684e039fc6b50a5",
+    "scripts/build.cjs": "16079c2f15d7464cf1c6d5e00ea64538f4192ad55ce56400eaa1f744222fe0ee",
     "scripts/privacy.cjs": "4b668fbff1d84870911ed6b178019b8a375afb4aa4c03aaa29fa640bcb3a5932",
+    "scripts/github-pages.cjs": "2e9ec7d892c0aae32e3500256cb9031c234933792d66813299d44fbca4927096",
+    "_config.yml": "69bc3e83bde77262da92fe40c825d6c4ed7211033292ef5bd313cc50bf9d8b36",
     "assets/core.js": "d4278afc07a9dafc68d029992ca3d102bba9fe39eecaa4b85098c422faadd2f5",
     "assets/site.js": "e1acafb9b9142b55faf5cc366f179733f0ddfabb157eb10069603bfadf0fe3b5",
     "assets/catalog.js": "ad5ea5aa435d7fd25a2f2440141c3ab5ad3f5f8c306dc95f396f36e016e3ecdb",
@@ -13,6 +15,7 @@
     "assets/styles.css": "bb8157b3f5acc651c5065a67722c496263d7e4af8da0cf9faeb4093e45bb8456"
   },
   "outputs": {
+    "CNAME": "259991bf903c1e09e9e18fde97076f61f4a7673aedd02873a0e753f4fe58844b",
     "index.html": "de309f7c84b4b471052276986a349a03ab303440f82daaf6959bdaa4c31dd85c",
     "catalogo.html": "218e09f12fd5f812245bdc87d4141bde88be8d2b40bf4aa6df60db70ffcabf44",
     "personalizar.html": "3107be0ef6bfb6d25ec639fbc54071e745ab9b7fde5dbed02c9cc7f4b05fa4de",

@@ -1,6 +1,6 @@
 # Desplegar sin publicar fuentes privadas
 
-El despliegue sigue pendiente; no se publicaron cambios automáticamente. Esta versión es para un hosting estático en la raíz de `aurealidiaflorist.com`. No requiere PHP, base de datos ni Node en el hosting. El proceso de generación sí utiliza Node localmente.
+El propietario autorizó publicar esta versión en GitHub Pages el 8 de octubre de 2026. El sitio usa la raíz de `main` y el dominio `aurealidiaflorist.com`, conservando la configuración existente. No requiere PHP, base de datos ni Node en el hosting. El proceso de generación utiliza Node localmente.
 
 ## Antes de publicar
 
@@ -25,6 +25,10 @@ El control comprueba también las huellas de fuentes y archivos públicos: si ed
 ## Qué subir
 
 `deploy-manifest.json` enumera solo archivos públicos. **Sube exclusivamente esos archivos**, manteniendo carpetas y nombres. No subas `.git`, `.env`, fuentes administrativas, pruebas, documentación, `catalog-source.json`, `data/products.json`, `site.config.json` ni contratos de backend. El archivo público de catálogo es `data/catalog.json`, con productos publicados únicamente.
+
+En este repositorio, GitHub Pages ya publica `main` mediante Jekyll. El build genera `_config.yml` para excluir del sitio todo archivo ajeno al manifiesto, incluidos directorios de mantenimiento y archivos de configuración. También conserva `CNAME`. **No añadir `.nojekyll`**: desactivaría las exclusiones. Las fuentes permanecen en el repositorio público, aunque no se sirvan bajo el dominio; nunca guardar datos de clientes ni secretos en Git.
+
+Para actualizar posteriormente: editar productos/configuración, ejecutar build, pruebas y check de release, revisar los cambios y subir a `main` los fuentes y archivos generados. Pages recompila y publica automáticamente. El generador del catálogo no se ejecuta en el hosting: no basta con cambiar `data/products.json` sin regenerar las páginas. Consultar el resultado en la pestaña Actions antes de dar la actualización por terminada.
 
 Para generar una carpeta de entrega después de resolver pendientes:
 

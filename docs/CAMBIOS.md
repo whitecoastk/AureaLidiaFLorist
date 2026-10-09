@@ -43,7 +43,7 @@ El propietario confirmó WhatsApp y aportó los datos necesarios para el aviso; 
 
 ## Resultado final de revisión local
 
-- Build correcto y 35 pruebas automatizadas aprobadas, incluyendo bloqueo ante identidad o domicilio incompletos y protección de los datos del responsable frente a inyección HTML. Sin dependencias npm.
+- Build correcto y 36 pruebas automatizadas aprobadas, incluyendo bloqueo ante identidad o domicilio incompletos, protección frente a inyección HTML y exclusión de fuentes administrativas en GitHub Pages. Sin dependencias npm.
 - Navegación móvil operativa y filtros combinados de tipo/presupuesto, así como ocasión/presupuesto/flor/color. Se corrigió también el servidor local que inicialmente no servía los JS de raíz; la revisión final sí ejecuta todos los scripts.
 - Flujo de ficha → solicitud CDMX → errores de entrega → resumen válido → enlace codificado. No se abrió ni envió un pedido real a WhatsApp.
 - Flujo personalizado con municipio de Edomex y horario flexible; marca Jardín Eterno y campaña conservadas en el mensaje. Referencia no publicada bloquea el formulario y ofrece volver a elegir.
