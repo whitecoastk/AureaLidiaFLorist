@@ -1,0 +1,13 @@
+{
+  "name": "aurea-lidia-florist",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "start": "node scripts/serve.cjs",
+    "import:sheet": "node scripts/import-sheet.cjs",
+    "check:release": "node scripts/check-release.cjs"
+  },
+  "engines": { "node": ">=18" }
+}

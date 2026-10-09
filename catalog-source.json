@@ -1,0 +1,669 @@
+{
+  "cols": [
+    {
+      "id": "A",
+      "label": "id",
+      "type": "number",
+      "pattern": "General"
+    },
+    {
+      "id": "B",
+      "label": "name",
+      "type": "string"
+    },
+    {
+      "id": "C",
+      "label": "price",
+      "type": "number",
+      "pattern": "General"
+    },
+    {
+      "id": "D",
+      "label": "image",
+      "type": "string"
+    },
+    {
+      "id": "E",
+      "label": "description",
+      "type": "string"
+    },
+    {
+      "id": "F",
+      "label": "category",
+      "type": "string"
+    },
+    {
+      "id": "G",
+      "label": "popular",
+      "type": "boolean"
+    },
+    {
+      "id": "H",
+      "label": "badge",
+      "type": "string"
+    }
+  ],
+  "rows": [
+    {
+      "c": [
+        {
+          "v": 1,
+          "f": "1"
+        },
+        {
+          "v": "Ramo Mediano"
+        },
+        {
+          "v": 599,
+          "f": "599"
+        },
+        {
+          "v": "ramo-rojo.jpg"
+        },
+        {
+          "v": "Ramo rojo mediano con ese rojo intenso que le encantara."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "Más Vendido"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 2,
+          "f": "2"
+        },
+        {
+          "v": "Ramo Elegante Rosas"
+        },
+        {
+          "v": 899,
+          "f": "899"
+        },
+        {
+          "v": "arreglo-rosas-pink.jpg"
+        },
+        {
+          "v": "florero con 25 rosas ideal de centro de mesa y escritorio "
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": "aniversario"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 3,
+          "f": "3"
+        },
+        {
+          "v": "Amor Eterno"
+        },
+        {
+          "v": 1299,
+          "f": "1299"
+        },
+        {
+          "v": "ramo-romantico.jpg"
+        },
+        {
+          "v": "Ramo premium con rosas rojas."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "Edición Limitada"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 4,
+          "f": "4"
+        },
+        {
+          "v": "Dulce Encanto"
+        },
+        {
+          "v": 649,
+          "f": "649"
+        },
+        {
+          "v": "rosas-pink-arrangement.jpg"
+        },
+        {
+          "v": "Arreglo delicado con rosas rosadas y blancas, perfecto para cumpleaños."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 5,
+          "f": "5"
+        },
+        {
+          "v": "Centro de Mesa Elegante"
+        },
+        {
+          "v": 999,
+          "f": "999"
+        },
+        {
+          "v": "centro-mesa-pink.jpg"
+        },
+        {
+          "v": "Hermoso centro de mesa con rosas y follaje, perfecto para eventos especiales."
+        },
+        {
+          "v": "centros"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 6,
+          "f": "6"
+        },
+        {
+          "v": "Bouquet de Rosas Rojas"
+        },
+        {
+          "v": 499,
+          "f": "499"
+        },
+        {
+          "v": "bouquet-roses.jpg"
+        },
+        {
+          "v": "Clásico bouquet de 24 rosas rojas con verde ornamental y envoltura premium."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "Perfecto para San Valentín"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 7,
+          "f": "7"
+        },
+        {
+          "v": "Ramo Elegante Blanco"
+        },
+        {
+          "v": 1349,
+          "f": "1349"
+        },
+        {
+          "v": "ramo-elegante.jpg"
+        },
+        {
+          "v": "Sofisticado ramo de rosas blancas y lirios, ideal para celebraciones elegantes."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 8,
+          "f": "8"
+        },
+        {
+          "v": "Rosas Románticas"
+        },
+        {
+          "v": 549,
+          "f": "549"
+        },
+        {
+          "v": "rosas-romanticas.jpg"
+        },
+        {
+          "v": "Encantador ramo de rosas rosadas con detalles de follaje y envoltura especial."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 9,
+          "f": "9"
+        },
+        {
+          "v": "Para Mamá"
+        },
+        {
+          "v": 299,
+          "f": "299"
+        },
+        {
+          "v": "flores-mama.jpg"
+        },
+        {
+          "v": "Arreglo especial para el Día de las Madres con sus flores favoritas."
+        },
+        {
+          "v": "especiales"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "Día de las Madres"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 10,
+          "f": "10"
+        },
+        {
+          "v": "Ramo de rosas grande"
+        },
+        {
+          "v": 1199,
+          "f": "1199"
+        },
+        {
+          "v": "Ramo-Cincuenta2Colores.jpg"
+        },
+        {
+          "v": "Ramo de 50 rosas de 2 colores, perfecto para esa persona ideal."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 11,
+          "f": "11"
+        },
+        {
+          "v": "Florero Grande"
+        },
+        {
+          "v": 1799,
+          "f": "1799"
+        },
+        {
+          "v": "Florero-GrandeACAROS.jpg"
+        },
+        {
+          "v": "Florero con Lirios y rosas ideal para aniversario."
+        },
+        {
+          "v": "centros"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 12,
+          "f": "12"
+        },
+        {
+          "v": "Ramo de 50 gerberas"
+        },
+        {
+          "v": 1399,
+          "f": "1399"
+        },
+        {
+          "v": "Ramo-Gerberas-G.jpg"
+        },
+        {
+          "v": "Ramo de 50 gerberas ideal para aniversario."
+        },
+        {
+          "v": "especiales"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 13,
+          "f": "13"
+        },
+        {
+          "v": "Ramo de Novia blanco"
+        },
+        {
+          "v": 899,
+          "f": "899"
+        },
+        {
+          "v": "Ramo-De_Novia.jpg"
+        },
+        {
+          "v": "Ramo de novia con lisianthus ideal para quien busca elegancia y belleza."
+        },
+        {
+          "v": "especiales"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 14,
+          "f": "14"
+        },
+        {
+          "v": "El Amor de mi Vida"
+        },
+        {
+          "v": 799,
+          "f": "799"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090889/20260120_172508_uzq6v3.jpg"
+        },
+        {
+          "v": "Ramo de 25 rosas con 4 girasoles tamaño jumbo."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": null
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 15,
+          "f": "15"
+        },
+        {
+          "v": "Rosa Inglesa"
+        },
+        {
+          "v": 499,
+          "f": "499"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090921/IMG_20250219_164840_vhare7.jpg"
+        },
+        {
+          "v": "Ramo de 10 rosas inglesas perfecto para apreciar la belleza blanca."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "San Valentín"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 16,
+          "f": "16"
+        },
+        {
+          "v": "Orquidea Blanca"
+        },
+        {
+          "v": 1199,
+          "f": "1199"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090859/20250908_113843_ajgmqv.jpg"
+        },
+        {
+          "v": "Orquidea con base de ceramica en planta con follajes."
+        },
+        {
+          "v": "centros"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": "aniversario"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 17,
+          "f": "17"
+        },
+        {
+          "v": "Rosas con tulipanes"
+        },
+        {
+          "v": 999,
+          "f": "999"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090868/20251123_110400_sruhyf.jpg"
+        },
+        {
+          "v": "Ramo perfecto para esa persona especial."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "San Valentín"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 18,
+          "f": "18"
+        },
+        {
+          "v": "Rosas con Margaritas"
+        },
+        {
+          "v": 399,
+          "f": "399"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090879/20251223_140401_mh20we.jpg"
+        },
+        {
+          "v": "Se diferente con margaritas."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": "Más Vendido"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 19,
+          "f": "19"
+        },
+        {
+          "v": "Amor Naranja"
+        },
+        {
+          "v": 599,
+          "f": "599"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090880/20260105_135601_ppix9m.jpg"
+        },
+        {
+          "v": "Las rosas mas preciosas que podras encontrar."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": false,
+          "f": "FALSE"
+        },
+        {
+          "v": "Más Vendido"
+        }
+      ]
+    },
+    {
+      "c": [
+        {
+          "v": 20,
+          "f": "20"
+        },
+        {
+          "v": "Amor que Sabe"
+        },
+        {
+          "v": 899,
+          "f": "899"
+        },
+        {
+          "v": "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090887/20260115_132830_bcbeho.jpg"
+        },
+        {
+          "v": "Que sea un amor chocolatoso."
+        },
+        {
+          "v": "ramos"
+        },
+        {
+          "v": true,
+          "f": "TRUE"
+        },
+        {
+          "v": "Edición Limitada"
+        }
+      ]
+    }
+  ],
+  "parsedNumHeaders": 1
+}

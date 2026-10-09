@@ -1,0 +1,475 @@
+[
+  {
+    "id": "1",
+    "slug": "ramo-mediano-1",
+    "status": "published",
+    "name": "Ramo Mediano",
+    "description": "Ramo rojo mediano con ese rojo intenso que le encantara.",
+    "price": 599,
+    "priceType": "reference",
+    "images": [
+      "resources/ramo-rojo.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original"
+  },
+  {
+    "id": "2",
+    "slug": "ramo-elegante-rosas-2",
+    "status": "published",
+    "name": "Ramo Elegante Rosas",
+    "description": "florero con 25 rosas ideal de centro de mesa y escritorio",
+    "price": 899,
+    "priceType": "reference",
+    "images": [
+      "resources/arreglo-rosas-pink.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [
+      "aniversario"
+    ],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "3",
+    "slug": "amor-eterno-3",
+    "status": "published",
+    "name": "Amor Eterno",
+    "description": "Ramo premium con rosas rojas.",
+    "price": 1299,
+    "priceType": "reference",
+    "images": [
+      "resources/ramo-romantico.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [
+      "Rojo"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "4",
+    "slug": "dulce-encanto-4",
+    "status": "published",
+    "name": "Dulce Encanto",
+    "description": "Arreglo delicado con rosas rosadas y blancas, perfecto para cumpleaños.",
+    "price": 649,
+    "priceType": "reference",
+    "images": [
+      "resources/rosas-pink-arrangement.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [
+      "cumpleanos"
+    ],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [
+      "Rosa",
+      "Blanco"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "5",
+    "slug": "centro-de-mesa-elegante-5",
+    "status": "published",
+    "name": "Centro de Mesa Elegante",
+    "description": "Hermoso centro de mesa con rosas y follaje, perfecto para eventos especiales.",
+    "price": 999,
+    "priceType": "reference",
+    "images": [
+      "resources/centro-mesa-pink.jpg"
+    ],
+    "category": "centros",
+    "occasions": [],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "6",
+    "slug": "bouquet-de-rosas-rojas-6",
+    "status": "published",
+    "name": "Bouquet de Rosas Rojas",
+    "description": "Clásico bouquet de 24 rosas rojas con verde ornamental y envoltura premium.",
+    "price": 499,
+    "priceType": "reference",
+    "images": [
+      "resources/bouquet-roses.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [
+      "amor"
+    ],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [
+      "Rojo"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "7",
+    "slug": "ramo-elegante-blanco-7",
+    "status": "published",
+    "name": "Ramo Elegante Blanco",
+    "description": "Sofisticado ramo de rosas blancas y lirios, ideal para celebraciones elegantes.",
+    "price": 1349,
+    "priceType": "reference",
+    "images": [
+      "resources/ramo-elegante.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas",
+      "Lirios"
+    ],
+    "colors": [
+      "Blanco"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "8",
+    "slug": "rosas-romanticas-8",
+    "status": "published",
+    "name": "Rosas Románticas",
+    "description": "Encantador ramo de rosas rosadas con detalles de follaje y envoltura especial.",
+    "price": 549,
+    "priceType": "reference",
+    "images": [
+      "resources/rosas-romanticas.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [
+      "Rosa"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "9",
+    "slug": "para-mama-9",
+    "status": "published",
+    "name": "Para Mamá",
+    "description": "Arreglo especial para el Día de las Madres con sus flores favoritas.",
+    "price": 299,
+    "priceType": "reference",
+    "images": [
+      "resources/flores-mama.jpg"
+    ],
+    "category": "especiales",
+    "occasions": [
+      "madres"
+    ],
+    "flowers": [],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original"
+  },
+  {
+    "id": "10",
+    "slug": "ramo-de-rosas-grande-10",
+    "status": "published",
+    "name": "Ramo de rosas grande",
+    "description": "Ramo de 50 rosas de 2 colores, perfecto para esa persona ideal.",
+    "price": 1199,
+    "priceType": "reference",
+    "images": [
+      "resources/Ramo-Cincuenta2Colores.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "11",
+    "slug": "florero-grande-11",
+    "status": "published",
+    "name": "Florero Grande",
+    "description": "Florero con Lirios y rosas ideal para aniversario.",
+    "price": 1799,
+    "priceType": "reference",
+    "images": [
+      "resources/Florero-GrandeACAROS.jpg"
+    ],
+    "category": "centros",
+    "occasions": [
+      "aniversario"
+    ],
+    "flowers": [
+      "Lirios",
+      "Rosas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "12",
+    "slug": "ramo-de-50-gerberas-12",
+    "status": "published",
+    "name": "Ramo de 50 gerberas",
+    "description": "Ramo de 50 gerberas ideal para aniversario.",
+    "price": 1399,
+    "priceType": "reference",
+    "images": [
+      "resources/Ramo-Gerberas-G.jpg"
+    ],
+    "category": "especiales",
+    "occasions": [
+      "aniversario"
+    ],
+    "flowers": [
+      "Gerberas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "13",
+    "slug": "ramo-de-novia-blanco-13",
+    "status": "published",
+    "name": "Ramo de Novia blanco",
+    "description": "Ramo de novia con lisianthus ideal para quien busca elegancia y belleza.",
+    "price": 899,
+    "priceType": "reference",
+    "images": [
+      "resources/Ramo-De_Novia.jpg"
+    ],
+    "category": "especiales",
+    "occasions": [
+      "boda"
+    ],
+    "flowers": [
+      "Lisianthus"
+    ],
+    "colors": [
+      "Blanco"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "14",
+    "slug": "el-amor-de-mi-vida-14",
+    "status": "published",
+    "name": "El Amor de mi Vida",
+    "description": "Ramo de 25 rosas con 4 girasoles tamaño jumbo.",
+    "price": 799,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090889/20260120_172508_uzq6v3.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas",
+      "Girasoles"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "15",
+    "slug": "rosa-inglesa-15",
+    "status": "published",
+    "name": "Rosa Inglesa",
+    "description": "Ramo de 10 rosas inglesas perfecto para apreciar la belleza blanca.",
+    "price": 499,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090921/IMG_20250219_164840_vhare7.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [
+      "amor"
+    ],
+    "flowers": [
+      "Rosas inglesas"
+    ],
+    "colors": [
+      "Blanco"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "16",
+    "slug": "orquidea-blanca-16",
+    "status": "published",
+    "name": "Orquidea Blanca",
+    "description": "Orquidea con base de ceramica en planta con follajes.",
+    "price": 1199,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090859/20250908_113843_ajgmqv.jpg"
+    ],
+    "category": "centros",
+    "occasions": [
+      "aniversario"
+    ],
+    "flowers": [
+      "Orquídeas"
+    ],
+    "colors": [
+      "Blanco"
+    ],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "17",
+    "slug": "rosas-con-tulipanes-17",
+    "status": "published",
+    "name": "Rosas con tulipanes",
+    "description": "Ramo perfecto para esa persona especial.",
+    "price": 999,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090868/20251123_110400_sruhyf.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [
+      "amor"
+    ],
+    "flowers": [
+      "Rosas",
+      "Tulipanes"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "18",
+    "slug": "rosas-con-margaritas-18",
+    "status": "published",
+    "name": "Rosas con Margaritas",
+    "description": "Se diferente con margaritas.",
+    "price": 399,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090879/20251223_140401_mh20we.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas",
+      "Margaritas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "19",
+    "slug": "amor-naranja-19",
+    "status": "published",
+    "name": "Amor Naranja",
+    "description": "Las rosas mas preciosas que podras encontrar.",
+    "price": 599,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090880/20260105_135601_ppix9m.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [
+      "Rosas"
+    ],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original",
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+  },
+  {
+    "id": "20",
+    "slug": "amor-que-sabe-20",
+    "status": "published",
+    "name": "Amor que Sabe",
+    "description": "Que sea un amor chocolatoso.",
+    "price": 899,
+    "priceType": "reference",
+    "images": [
+      "https://res.cloudinary.com/dhgqyjyee/image/upload/v1770090887/20260115_132830_bcbeho.jpg"
+    ],
+    "category": "ramos",
+    "occasions": [],
+    "flowers": [],
+    "colors": [],
+    "variations": [],
+    "featured": false,
+    "source": "Google Sheets del sitio original"
+  }
+]

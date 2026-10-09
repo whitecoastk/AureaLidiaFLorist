@@ -1,0 +1,274 @@
+{
+  "resources/arreglo-rosas-pink.jpg": [
+    {
+      "src": "resources/optimized/arreglo-rosas-pink-400.webp",
+      "width": 400,
+      "height": 368
+    },
+    {
+      "src": "resources/optimized/arreglo-rosas-pink-800.webp",
+      "width": 800,
+      "height": 736
+    },
+    {
+      "src": "resources/optimized/arreglo-rosas-pink-1200.webp",
+      "width": 980,
+      "height": 902
+    }
+  ],
+  "resources/bouquet-roses.jpg": [
+    {
+      "src": "resources/optimized/bouquet-roses-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/bouquet-roses-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/bouquet-roses-1200.webp",
+      "width": 1200,
+      "height": 1600
+    }
+  ],
+  "resources/centro-mesa-pink.jpg": [
+    {
+      "src": "resources/optimized/centro-mesa-pink-400.webp",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "src": "resources/optimized/centro-mesa-pink-800.webp",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "src": "resources/optimized/centro-mesa-pink-1200.webp",
+      "width": 1005,
+      "height": 1005
+    }
+  ],
+  "resources/Florero-GrandeACAROS.jpg": [
+    {
+      "src": "resources/optimized/Florero-GrandeACAROS-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/Florero-GrandeACAROS-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/Florero-GrandeACAROS-1200.webp",
+      "width": 1200,
+      "height": 1600
+    }
+  ],
+  "resources/flores-mama.jpg": [
+    {
+      "src": "resources/optimized/flores-mama-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/flores-mama-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/flores-mama-1200.webp",
+      "width": 960,
+      "height": 1280
+    }
+  ],
+  "resources/florista-trabajando.jpg": [
+    {
+      "src": "resources/optimized/florista-trabajando-400.webp",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "src": "resources/optimized/florista-trabajando-800.webp",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "src": "resources/optimized/florista-trabajando-1200.webp",
+      "width": 1024,
+      "height": 1024
+    }
+  ],
+  "resources/hero-flores.jpg": [
+    {
+      "src": "resources/optimized/hero-flores-400.webp",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "src": "resources/optimized/hero-flores-800.webp",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "src": "resources/optimized/hero-flores-1200.webp",
+      "width": 1024,
+      "height": 1024
+    }
+  ],
+  "resources/Ramo-Cincuenta2Colores.jpg": [
+    {
+      "src": "resources/optimized/Ramo-Cincuenta2Colores-400.webp",
+      "width": 400,
+      "height": 300
+    },
+    {
+      "src": "resources/optimized/Ramo-Cincuenta2Colores-800.webp",
+      "width": 800,
+      "height": 600
+    },
+    {
+      "src": "resources/optimized/Ramo-Cincuenta2Colores-1200.webp",
+      "width": 1200,
+      "height": 900
+    }
+  ],
+  "resources/Ramo-De_Novia.jpg": [
+    {
+      "src": "resources/optimized/Ramo-De_Novia-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/Ramo-De_Novia-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/Ramo-De_Novia-1200.webp",
+      "width": 1200,
+      "height": 1600
+    }
+  ],
+  "resources/ramo-elegante.jpg": [
+    {
+      "src": "resources/optimized/ramo-elegante-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/ramo-elegante-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/ramo-elegante-1200.webp",
+      "width": 960,
+      "height": 1280
+    }
+  ],
+  "resources/Ramo-Gerberas-G.jpg": [
+    {
+      "src": "resources/optimized/Ramo-Gerberas-G-400.webp",
+      "width": 400,
+      "height": 532
+    },
+    {
+      "src": "resources/optimized/Ramo-Gerberas-G-800.webp",
+      "width": 800,
+      "height": 1065
+    },
+    {
+      "src": "resources/optimized/Ramo-Gerberas-G-1200.webp",
+      "width": 1200,
+      "height": 1597
+    }
+  ],
+  "resources/ramo-rojo.jpg": [
+    {
+      "src": "resources/optimized/ramo-rojo-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/ramo-rojo-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/ramo-rojo-1200.webp",
+      "width": 1200,
+      "height": 1600
+    }
+  ],
+  "resources/ramo-romantico.jpg": [
+    {
+      "src": "resources/optimized/ramo-romantico-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/ramo-romantico-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/ramo-romantico-1200.webp",
+      "width": 1200,
+      "height": 1600
+    }
+  ],
+  "resources/rosas-pink-arrangement.jpg": [
+    {
+      "src": "resources/optimized/rosas-pink-arrangement-400.webp",
+      "width": 400,
+      "height": 533
+    },
+    {
+      "src": "resources/optimized/rosas-pink-arrangement-800.webp",
+      "width": 800,
+      "height": 1067
+    },
+    {
+      "src": "resources/optimized/rosas-pink-arrangement-1200.webp",
+      "width": 1080,
+      "height": 1440
+    }
+  ],
+  "resources/rosas-romanticas.jpg": [
+    {
+      "src": "resources/optimized/rosas-romanticas-400.webp",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "src": "resources/optimized/rosas-romanticas-800.webp",
+      "width": 700,
+      "height": 700
+    },
+    {
+      "src": "resources/optimized/rosas-romanticas-1200.webp",
+      "width": 700,
+      "height": 700
+    }
+  ],
+  "resources/tienda-interior.jpg": [
+    {
+      "src": "resources/optimized/tienda-interior-400.webp",
+      "width": 400,
+      "height": 400
+    },
+    {
+      "src": "resources/optimized/tienda-interior-800.webp",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "src": "resources/optimized/tienda-interior-1200.webp",
+      "width": 1024,
+      "height": 1024
+    }
+  ]
+}
