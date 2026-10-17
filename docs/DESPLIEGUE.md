@@ -4,6 +4,8 @@ El propietario autorizó publicar esta versión en GitHub Pages el 8 de octubre 
 
 ## Antes de publicar
 
+La actualización de octubre conecta el catálogo en el navegador a la pestaña pública `gid=0` de Google Sheets. Hay que publicar esta versión una vez para activar esa conexión en producción; después las ediciones de celdas se ven al recargar, sin otro despliegue para cada cambio comercial. La importación/build sigue actualizando la copia estática, las nuevas URLs legibles, sitemap y vistas previas. Se añadieron `assets/sheet.js`, `assets/catalog-view.js`, `assets/live-catalog.js` y `arreglo.html` al manifiesto: publicar todo el conjunto, no solo el HTML del catálogo. Ver `CATALOGO-GOOGLE-SHEETS.md`.
+
 1. WhatsApp `525618689260` confirmado por el propietario; `whatsappVerified=true`. Si cambia, verificar nuevamente. No envíes pedidos de prueba a clientes.
 2. Aviso preparado por encargo del propietario con identidad y domicilio del negocio proporcionados; contacto de privacidad por WhatsApp. Ver `docs/PRIVACIDAD.md` para mantener el texto y atender solicitudes. `privacy.reviewed=true` representa revisión del texto con estos datos, no una certificación legal ni verificación de la operación.
 3. Revisa los 20 productos y precios importados. “Centro de Mesa Elegante” conserva $999 desde Sheets; se retiró la discrepancia del botón de $799. Confirma ese precio y cualquier cambio comercial.

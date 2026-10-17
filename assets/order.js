@@ -12,9 +12,13 @@
       try{
         product=(await window.FloristProducts()).find(p=>p.id===params.get('arreglo')&&p.status==='published');
         if(!product)throw Error('Esta referencia ya no está publicada.');
+        if(!core.canRequest(product))throw Error('Este arreglo está marcado como no disponible y no se puede solicitar.');
         if(params.has('variacion')){variation=product.variations.find(v=>v.id===params.get('variacion'));if(!variation)throw Error('La variación solicitada no está definida.');}
         else if(product.variations.length)variation=product.variations[0];
         document.getElementById('chosen-product').textContent=product.name+(variation?' · '+variation.label:'')+' · '+core.priceLabel(variation||product)+' · precio final por confirmar';
+        document.getElementById('send-whatsapp').textContent=core.requestLabel(product);
+        let dedication='';try{dedication=core.consumeDedication(window.sessionStorage,product.id);}catch{}
+        if(dedication)form.elements.dedication.value=dedication;
         if((variation||product).priceType!=='quote')form.elements.budget.value=(variation||product).price;
         form.querySelector('[data-next]').disabled=false;
       }catch(e){
@@ -23,8 +27,8 @@
       }
     }
     const date=form.elements.date;date.min=core.localDate();
-    const read=()=>({budget:form.elements.budget.value.trim(),date:date.value,time:form.elements.time.value,region:form.elements.region.value,neighborhood:form.elements.neighborhood.value.trim(),borough:form.elements.borough.value.trim(),postalCode:form.elements.postalCode.value.trim(),dedication:form.elements.dedication.value.trim(),customization:form.elements.customization.value.trim(),notes:form.elements.notes.value.trim(),accepted:form.elements.accepted.checked,hasReference:Boolean(referenceURL),variation,requestId});
-    const errorFields=['budget','date','time','region','neighborhood','borough','postalCode','dedication','customization','notes','accepted'];
+    const read=()=>({budget:form.elements.budget.value.trim(),date:date.value,time:form.elements.time.value,region:form.elements.region.value,neighborhood:form.elements.neighborhood.value.trim(),borough:form.elements.borough.value.trim(),postalCode:form.elements.postalCode.value.trim(),dedication:form.elements.dedication.value.trim(),flowerPreference:form.elements.flowerPreference.value.trim(),colorPreference:form.elements.colorPreference.value.trim(),presentation:form.elements.presentation.value.trim(),customization:form.elements.customization.value.trim(),notes:form.elements.notes.value.trim(),accepted:form.elements.accepted.checked,hasReference:Boolean(referenceURL),variation,requestId});
+    const errorFields=['budget','date','time','region','neighborhood','borough','postalCode','dedication','flowerPreference','colorPreference','presentation','customization','notes','accepted'];
     function errorsFor(fields){
       const all=core.validateOrder(read(),undefined,window.FLORIST_CONFIG.minimumCustomBudget),errors={};
       for(const id of errorFields){const error=fields.includes(id)?all[id]:'';document.getElementById(id+'-error').textContent=error||'';form.elements[id].setAttribute('aria-invalid',String(Boolean(error)));if(error)errors[id]=error;}
@@ -37,7 +41,7 @@
       const heading=document.querySelector('[data-step="'+n+'"] '+(n===3?'h2':'legend'));heading.focus();heading.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
     }
     form.querySelector('[data-next]').addEventListener('click',()=>{
-      if(!errorsFor(['budget','customization']))return;
+      if(!errorsFor(['budget','flowerPreference','colorPreference','presentation','customization']))return;
       analytics.track('begin_checkout',{...(product?{item_id:product.id}:{}),flow:product?'catalogo':'personalizado'},'order-start');show(2);
     });
     form.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>{reviewed=false;show(Number(b.dataset.back));}));
@@ -45,7 +49,7 @@
       if(!errorsFor(errorFields))return false;
       if(!requestId)requestId='AL-'+crypto.randomUUID();
       const o=read();message=core.orderMessage(o,product,analytics.attribution());
-      const rows=[['Referencia',requestId],['Arreglo',product?product.name:'Ramo personalizado'],...(variation?[['Variación',variation.label]]:[]),...(product?[['Precio de referencia',core.priceLabel(variation||product)]]:[]),['Presupuesto',core.money(Number(o.budget))+' MXN'],['Fecha solicitada',o.date],['Horario preferido',core.timeLabels[o.time]],['Zona',[o.neighborhood,o.borough,o.postalCode,o.region==='edomex'?'Estado de México':'CDMX'].join(', ')],['Dedicatoria',o.dedication||'Sin dedicatoria'],['Personalización',o.customization||'Sin preferencias adicionales'],['Observaciones',o.notes||'Sin observaciones'],['Fotografía',o.hasReference?'Seleccionada; debes adjuntarla en WhatsApp':'Sin fotografía de referencia']];
+      const rows=[['Referencia',requestId],['Arreglo',product?product.name:'Ramo personalizado'],...(product?[['Disponibilidad',core.availabilityLabel(product)]]:[]),...(variation?[['Variación',variation.label]]:[]),...(product?[['Precio de referencia',core.priceLabel(variation||product)]]:[]),['Presupuesto',core.money(Number(o.budget))+' MXN'],['Fecha solicitada',o.date],['Horario preferido',core.timeLabels[o.time]],['Zona',[o.neighborhood,o.borough,o.postalCode,o.region==='edomex'?'Estado de México':'CDMX'].join(', ')],['Dedicatoria',o.dedication||'Sin dedicatoria'],...(o.flowerPreference?[['Flores preferidas',o.flowerPreference]]:[]),...(o.colorPreference?[['Colores preferidos',o.colorPreference]]:[]),...(o.presentation?[['Tamaño o presentación',o.presentation]]:[]),['Personalización',o.customization||'Sin preferencias adicionales'],['Observaciones',o.notes||'Sin observaciones'],['Fotografía',o.hasReference?'Seleccionada; debes adjuntarla en WhatsApp':'Sin fotografía de referencia']];
       const list=document.getElementById('order-summary');list.replaceChildren();
       for(const [label,value]of rows){const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;div.append(dt,dd);list.append(div);}
       document.getElementById('photo-reminder').hidden=!o.hasReference;
