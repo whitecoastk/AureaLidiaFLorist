@@ -19,6 +19,8 @@
     "facebook": ""
   },
   "sheet": {
+    "enabled": true,
+    "gid": 0,
     "id": "1AYMtAh_G8P3jXRv8aSu3-QT6foWwG8HfGVHRjaa15PU",
     "name": "Hoja 1"
   }

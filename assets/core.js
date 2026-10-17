@@ -19,6 +19,7 @@
       if (typeof p.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug) || slugs.has(p.slug)) throw Error('URL de producto inválida o duplicada.');
       ids.add(p.id); slugs.add(p.slug);
       if (!['published','draft','retired'].includes(p.status)) throw Error('Estado inválido: '+p.id);
+      if (p.availability!==undefined&&!['available','unavailable','confirm'].includes(p.availability)) throw Error('Disponibilidad inválida: '+p.id);
       if (typeof p.name !== 'string' || !p.name.trim() || p.name.length > 150 || typeof p.description !== 'string') throw Error('Nombre o descripción inválidos: '+p.id);
       if (!['reference','fixed','from','quote'].includes(p.priceType)) throw Error('Modalidad de precio inválida: '+p.id);
       if (p.priceType !== 'quote' && (!Number.isFinite(p.price) || p.price <= 0 || p.price > 1000000)) throw Error('Precio inválido: '+p.id);
@@ -43,9 +44,17 @@
     let result = products.filter(p => p.status === 'published' && (!f.category || p.category === f.category) && (!f.occasion || p.occasions.includes(f.occasion)) && (!f.flower || p.flowers.includes(f.flower)) && (!f.color || p.colors.includes(f.color)) && (!f.budget || (p.priceType !== 'quote' && p.price <= Number(f.budget))) && (!f.query || (p.name+' '+p.description).toLocaleLowerCase('es').includes(f.query.toLocaleLowerCase('es'))));
     if (f.sort === 'price-low') result.sort((a,b)=>(a.priceType==='quote'?Infinity:a.price)-(b.priceType==='quote'?Infinity:b.price));
     else if (f.sort === 'price-high') result.sort((a,b)=>(b.priceType==='quote'?-Infinity:b.price)-(a.priceType==='quote'?-Infinity:a.price));
-    else result.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+    else if(f.sort!=='random')result.sort((a,b)=>a.name.localeCompare(b.name,'es'));
     return result;
   }
+  function shuffleProducts(products,random=Math.random){
+    const result=[...products];
+    for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
+    return result;
+  }
+  const canRequest=p=>p.status==='published'&&p.availability!=='unavailable';
+  const availabilityLabel=p=>p.availability==='unavailable'?'No Disponible':p.availability==='available'?'Disponible':'Disponibilidad por confirmar';
+  const requestLabel=p=>p&&p.availability==='available'?'Solicitar este arreglo':'Preguntar por disponibilidad';
   function localDate(date = new Date()) {
     return new Intl.DateTimeFormat('en-CA', {timeZone:'America/Mexico_City', year:'numeric', month:'2-digit', day:'2-digit'}).format(date);
   }
@@ -62,17 +71,21 @@
     if (!/^\d{5}$/.test(o.postalCode || '')) errors.postalCode = 'Escribe un código postal de cinco dígitos.';
     if ((o.dedication || '').length>500) errors.dedication='La dedicatoria admite hasta 500 caracteres.';
     if ((o.customization || '').length>1000) errors.customization='Usa hasta 1,000 caracteres.';
+    for(const field of ['flowerPreference','colorPreference','presentation'])if((o[field]||'').length>160)errors[field]='Usa hasta 160 caracteres.';
     if ((o.notes || '').length>1000) errors.notes='Usa hasta 1,000 caracteres.';
     if (!o.accepted) errors.accepted='Confirma que la solicitud está sujeta a disponibilidad, precio y entrega.';
     return errors;
   }
   const timeLabels = {'09-13':'9:00–13:00','13-17':'13:00–17:00','17-20':'17:00–20:00',flexible:'Horario flexible'};
   function orderMessage(o, p, attribution = {}) {
-    return ['Hola, quisiera solicitar un arreglo de Áurea Lidia.', '', 'SOLICITUD '+o.requestId,
+    return [p&&p.availability!=='available'?'Hola, quisiera preguntar por disponibilidad de este arreglo de Áurea Lidia.':'Hola, quisiera solicitar un arreglo de Áurea Lidia.', '', 'SOLICITUD '+o.requestId,
       'Arreglo: '+(p ? p.name+' (ref. '+p.id+')' : 'Ramo personalizado'),
       ...(o.variation ? ['Variación: '+o.variation.label] : []),
       ...(p ? ['Precio de referencia: '+priceLabel(o.variation || p)] : []),
       'Presupuesto: '+money(Number(o.budget))+' MXN', 'Fecha solicitada: '+o.date,
+      ...(o.flowerPreference?['Flores preferidas: '+o.flowerPreference]:[]),
+      ...(o.colorPreference?['Colores preferidos: '+o.colorPreference]:[]),
+      ...(o.presentation?['Tamaño o presentación preferida: '+o.presentation]:[]),
       'Horario preferido: '+timeLabels[o.time],
       'Zona: '+[o.neighborhood,o.borough,o.postalCode,o.region==='edomex'?'Estado de México':'CDMX'].join(', '),
       'Dedicatoria: '+(o.dedication || 'Sin dedicatoria'),
@@ -98,5 +111,12 @@
     if (params.get('marca') === 'jardin-eterno-cdmx') result.brand='Jardín Eterno CDMX';
     return result;
   }
-  return {occasions, money, safeImage, validateProducts, priceLabel, filterProducts, localDate, validateOrder, orderMessage, whatsappUrl, attributionFrom, timeLabels};
+  function consumeDedication(storage,productId,now=Date.now()){
+    try{
+      const raw=storage.getItem('aurea-product-dedication-v1');storage.removeItem('aurea-product-dedication-v1');if(!raw)return '';
+      const draft=JSON.parse(raw);
+      return draft.productId===productId&&typeof draft.text==='string'&&draft.text.length<=500&&Number.isFinite(draft.at)&&draft.at<=now&&now-draft.at<=600000?draft.text:'';
+    }catch{return '';}
+  }
+  return {occasions, money, safeImage, validateProducts, priceLabel, filterProducts, localDate, validateOrder, orderMessage, whatsappUrl, attributionFrom, timeLabels, canRequest, availabilityLabel, requestLabel, consumeDedication, shuffleProducts};
 });

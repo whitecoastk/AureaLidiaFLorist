@@ -1,6 +1,22 @@
 # Administrar productos y solicitudes
 
+## Fuente principal: Google Sheets
+
+Desde esta versión la presentación del sitio consulta directamente la hoja pública configurada (`gid=0`). Edita nombre, precio, image, descripción y categorías allí, y recarga. La columna opcional Disponible admite Sí/No/Disponibilidad. Las filas nuevas completas aparecen sin volver a generar el sitio; la copia estática y el SEO de nuevas fichas se actualizan con importación/build y publicación. Lee `CATALOGO-GOOGLE-SHEETS.md` para el formato, imágenes, estados y respaldo. El Excel que sigue se conserva como alternativa local.
+
 ## Productos
+
+### Editar con Excel
+
+Abre `admin/catalogo.xlsx`. La hoja **Productos** contiene los 20 productos originales. Añade nuevas filas con IDs únicos y datos reales. Mantén el ID y URL de las filas existentes. El Excel tiene filas vacías preparadas; puedes extender la tabla al continuar agregando.
+
+La columna **Disponible** controla el catálogo: **Sí** permite solicitar; **No** muestra la tarjeta en gris con «No Disponible» y bloquea la solicitud en tarjeta, ficha y enlaces directos; **Disponibilidad** mantiene la fotografía en color y cambia el botón a «Preguntar por disponibilidad». Ese botón conserva los tres pasos y el mensaje de WhatsApp pregunta por disponibilidad. Es independiente de **Estado** (Publicado/Borrador/Retirado). Usa No para flores de temporada sin eliminar el producto. Se acepta Si sin acento y, por compatibilidad, el encabezado Disponibilidad y los valores antiguos Disponible/No disponible/Por confirmar.
+
+Guarda el Excel y abre `Actualizar catalogo.cmd` en la carpeta del proyecto. Importa con respaldo local, regenera las páginas y verifica la configuración. Necesita Node y Python 3; en este equipo detecta los runtimes de Codex y no instala paquetes. Puedes validar sin cambiar datos con `node scripts/import-excel.cjs admin/catalogo.xlsx` y aplicar con `--apply`.
+
+El Excel no contiene fotos incrustadas: escribe rutas a fotos propias en `resources/` o URLs HTTPS. Una ruta nueva debe existir antes de publicar ese arreglo. No admite fórmulas en Productos, macros, IDs duplicados ni precios vacíos salvo modalidad Cotizar. Las filas borradas se conservan como retiradas en JSON. Las variaciones ya definidas se preservan por ID.
+
+**Importar no publica en Internet.** Después de revisar la vista local, sigue `docs/DESPLIEGUE.md` o pide a Codex subir y desplegar esta actualización. Cambiar el Excel guardado en tu equipo no puede modificar por sí solo GitHub Pages.
 
 Cada producto tiene un ID permanente y un slug permanente. No cambies ambos al actualizar nombre o precio: así conservas enlaces y referencias de campaña. Todas las páginas se generan de la misma fuente.
 

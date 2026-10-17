@@ -16,7 +16,8 @@
     "colors": [],
     "variations": [],
     "featured": false,
-    "source": "Google Sheets del sitio original"
+    "source": "Google Sheets del sitio original",
+    "availability": "confirm"
   },
   {
     "id": "2",
@@ -40,7 +41,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "3",
@@ -64,7 +66,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "4",
@@ -91,7 +94,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "5",
@@ -113,7 +117,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "6",
@@ -139,7 +144,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "7",
@@ -164,7 +170,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "8",
@@ -188,7 +195,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "9",
@@ -209,7 +217,8 @@
     "colors": [],
     "variations": [],
     "featured": false,
-    "source": "Google Sheets del sitio original"
+    "source": "Google Sheets del sitio original",
+    "availability": "confirm"
   },
   {
     "id": "10",
@@ -231,7 +240,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "11",
@@ -256,7 +266,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "12",
@@ -280,7 +291,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "13",
@@ -306,7 +318,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "14",
@@ -329,7 +342,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "15",
@@ -355,7 +369,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "16",
@@ -381,7 +396,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "17",
@@ -406,7 +422,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "18",
@@ -429,7 +446,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "19",
@@ -451,7 +469,8 @@
     "variations": [],
     "featured": false,
     "source": "Google Sheets del sitio original",
-    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía."
+    "metadataSource": "Etiquetas tomadas del nombre y descripción del catálogo original; no inferidas de la fotografía.",
+    "availability": "confirm"
   },
   {
     "id": "20",
@@ -470,6 +489,7 @@
     "colors": [],
     "variations": [],
     "featured": false,
-    "source": "Google Sheets del sitio original"
+    "source": "Google Sheets del sitio original",
+    "availability": "confirm"
   }
 ]

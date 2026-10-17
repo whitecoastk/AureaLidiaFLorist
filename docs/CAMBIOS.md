@@ -1,5 +1,46 @@
 # Cambios y verificación — versión comercial local
 
+## Orden inicial aleatorio del catálogo
+
+El selector inicia en Aleatorio. Se mezcla el catálogo una vez por apertura, conservando ese orden al filtrar, cargar más o volver desde orden por precio. Se mantienen Nombre, Precio: menor a mayor y Precio: mayor a menor. Si sessionStorage está disponible, se recuerda solo el primer ID por ocasión en esa pestaña para evitar que vuelva a encabezar la siguiente apertura cuando haya alternativas; sin almacenamiento, la mezcla funciona igualmente. No se guardan datos del cliente ni se cambia el catálogo fuente.
+
+Fuentes: `assets/catalog.js`, `assets/core.js` y selector de `scripts/build.cjs`; archivos públicos regenerados. Dos pruebas nuevas verifican mezcla sin pérdida/mutación y orden estable con filtros y precios. Se comprobó en navegador dos aperturas distintas y ambas direcciones de precio. Cambio local, sin publicación.
+
+## Frontend editorial y experiencia de pedido (16 de octubre de 2026)
+
+Se aplicó el plan documentado en `FRONTEND-EDITORIAL.md`: base visual refinada, tarjetas y fotografías más amplias, ficha estática/dinámica compartida, variantes reales, dedicatoria y campos de preferencias. Se corrigió la sustitución incorrecta del personalizador por el cargador de productos. Se conservaron datos, imágenes, rutas, Sheets, WhatsApp, analítica y consentimiento. Punto de recuperación local: `d1d76d9`; rama `codex/frontend-editorial-20261016`. No se publicó.
+
+Build y 57 pruebas correctos. Se probó dedicatoria de ficha a resumen, preferencias en mensaje, errores y fotografía local con recordatorio de adjunto manual; no se enviaron pedidos. Seis páginas revisadas a 320/390/768/1440 px sin desbordamiento horizontal. Los casos con variantes y varias fotos se verificaron con fixtures aislados, pues los 20 productos actuales no contienen esas opciones.
+
+## Conexión directa a Google Sheets (15 de octubre de 2026)
+
+- Se verificó por HTTPS la pestaña `gid=0` de la hoja proporcionada: 20 productos reales y columnas id/name/price/image/description/category/popular/badge. No se modificó la hoja ni sus permisos.
+- `assets/sheet.js` comparte entre navegador e importador la lectura y validación: encabezados actuales/españoles, disponibilidad de tres estados, publicación, modalidades, fotos, variaciones e IDs/URLs estables. La respuesta se procesa con JSON.parse, sin eval ni scripts remotos. La consulta no envía credenciales ni referrer.
+- `assets/live-catalog.js` y `assets/catalog-view.js` cargan la hoja y actualizan inicio, catálogo, fichas y datos de la solicitud. Nuevas filas tienen ficha dinámica en `arreglo.html`; las URLs individuales existentes siguen funcionando. Se conservaron optimización de fotos existentes, filtros, paginación y eventos deduplicados.
+- En caso de fallo se muestra un aviso y el respaldo publicado, sin afirmar disponibilidad actual. Disponible=No sigue bloqueado. El flujo revalida los datos al abrir una solicitud. La columna Disponible aún no existe en la hoja, por lo que se mantiene consulta de disponibilidad.
+- Se actualizó el importador local para compartir la conversión y guardar respaldo. Se importó la hoja actual al respaldo y se regeneraron páginas/manifiesto. No se publicaron cambios ni se configuró una automatización de despliegue.
+- Las altas aparecen en el navegador sin regenerar. Para su URL estática, sitemap y vistas previas de redes se mantiene el proceso importación/build/publicación. La vista genérica tiene noindex; sin JavaScript se ve la copia estática.
+- Se documentó el procedimiento en `CATALOGO-GOOGLE-SHEETS.md`, README, administración y despliegue. El aviso describe la conexión funcional a Google y lleva fecha del 15 de octubre.
+- Compilación correcta y 50 pruebas aprobadas. Cobertura adicional de datos reales, nuevos registros, encabezados, disponibilidad/estados, errores y HTML escapado, lectura sin credenciales y fallback. Navegador: origen Google Sheets confirmado, filtro por nombre, ficha y flujo completo hasta resumen con precio $1,299 de Amor Eterno, sin abrir ni enviar el WhatsApp. Catálogo sin desbordamiento a 320/390/768/1440 px y sin errores JS observados. Captura local `artifacts/catalogo-google-sheets-movil.png`.
+
+## Sistema de diseño y nuevo selector de disponibilidad
+
+- Se actualizó `design.md` con referencia observada, propuestas, tokens con contraste calculado, tipografía y CSS de ejemplo, componentes, arquitectura, criterios de aceptación y fases de implementación. El rediseño completo queda documentado para una fase posterior.
+- La columna de trabajo del Excel se llama Disponible y admite Sí/No/Disponibilidad. Se conservaron nombres, precios, fotografías, descripciones, IDs y URLs reales. No se confirmó disponibilidad inexistente: los 20 arreglos parten de Disponibilidad.
+- El importador acepta también Si sin acento y formatos anteriores. Se importó el XLSX al catálogo normalizado con respaldo y se regeneraron las páginas. El navegador consume el JSON generado, no el archivo administrativo.
+- No muestra «No Disponible» en gris y bloquea solicitud; Sí permite solicitud; Disponibilidad cambia los CTA de catálogo, ficha y envío final a «Preguntar por disponibilidad», y el mensaje preparado consulta disponibilidad. Se conserva el flujo en tres pasos y se muestra disponibilidad en el resumen.
+- Se aprobaron 43 pruebas. Se verificó catálogo móvil a 390 px y flujo completo de consulta hasta el resumen, sin enviar mensajes. El resumen no presenta desbordamiento a 320/390/768/1440 px y no mostró errores JavaScript. Evidencia local en `artifacts/consulta-disponibilidad-movil.png`.
+- Las dos hojas del Excel se renderizaron y revisaron. Se actualizaron las instrucciones de administración. No se cambiaron credenciales ni se publicó en GitHub Pages.
+
+## Catálogo con Excel y disponibilidad (octubre de 2026)
+
+- Se agregó `admin/catalogo.xlsx` con los 20 productos reales, desplegables y guía. No se añadieron productos inventados. La disponibilidad inicial es Por confirmar hasta que el negocio la revise.
+- `scripts/read-xlsx.py` y `scripts/import-excel.cjs` validan el archivo antes de importar, conservan los IDs y variaciones, rechazan fórmulas y datos inválidos y generan respaldo al aplicar. `Actualizar catalogo.cmd` permite actualizar las páginas localmente sin editar código.
+- No disponible mantiene tarjeta y ficha en gris, con etiqueta visible; elimina su botón de solicitud y bloquea el formulario incluso con enlace directo. Disponible permite solicitar, sujeto a confirmación comercial.
+- Las carpetas administrativas y de entregables quedan excluidas de GitHub Pages. Esta fase no se ha publicado.
+- `docs/PROMPT-DESIGN.md` contiene el prompt solicitado basado en la referencia botánica editorial; no copia sus promesas comerciales.
+- Verificación: build y control de configuración correctos; 41 pruebas aprobadas, incluyendo importación real del Excel, validaciones, altas/retiros, formulario con enlace directo y generación de la ficha no disponible. Las dos hojas del Excel se revisaron mediante imágenes renderizadas.
+
 ## Respaldo y decisiones
 
 - Commit inicial `af9c631` conserva los 28 archivos originales. Se inició Git y se realizó la excepción de propiedad solo por comando. No se cambiaron credenciales ni configuración global.

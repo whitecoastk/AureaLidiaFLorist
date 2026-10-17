@@ -16,6 +16,10 @@ Abre **http://localhost:4173**. Los equivalentes son `npm run build`, `npm test`
 
 ## Archivos que se editan
 
+La administración principal se realiza en Google Sheets, según `docs/CATALOGO-GOOGLE-SHEETS.md`. Como alternativa local, edita `admin/catalogo.xlsx` y abre `Actualizar catalogo.cmd`. La columna **Disponible** admite Sí, No y Disponibilidad. No conserva el arreglo visible en gris y bloquea su solicitud; Disponibilidad cambia el botón y mensaje a consulta de disponibilidad. Editar el Excel actualiza la copia estática; con Sheets activo, la hoja determina los datos que se ven con JavaScript. El importador de Excel necesita Python 3, sin paquetes adicionales.
+
+`design.md` documenta el sistema editorial botánico, tokens con contraste calculado, componentes, aceptación y plan de implementación a partir del HTML de referencia. Esta entrega implementa disponibilidad y documenta el rediseño; no aplica todavía el cambio visual completo.
+
 | Archivo | Uso |
 | --- | --- |
 | `data/products.json` | Fuente única de productos, precios, fotografías y etiquetas |
@@ -34,7 +38,9 @@ Lee `docs/ADMINISTRACION.md`, `docs/ANALITICA.md`, `docs/DESPLIEGUE.md` y `docs/
 
 ## Google Sheets
 
-La hoja existente se consulta **al actualizar**, no en cada visita del cliente:
+**Fuente principal actual:** la web consulta directamente la hoja pública configurada al abrir catálogo, inicio, ficha y solicitud. Nombre, precio, fotos, descripción y disponibilidad se actualizan desde ella. La importación de abajo mantiene el respaldo estático y SEO. Instrucciones: `docs/CATALOGO-GOOGLE-SHEETS.md`.
+
+Para actualizar también la copia HTML, el respaldo y sitemap:
 
 ```powershell
 node scripts/import-sheet.cjs
