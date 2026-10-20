@@ -1,0 +1,94 @@
+{
+  "name": "Áurea Lidia · recepción WhatsApp · SIMULACIÓN",
+  "active": false,
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Ejecutar prueba",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "fixture",
+      "name": "Mensaje ficticio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// DATOS FICTICIOS. No se recibe ni envía un WhatsApp real.\nreturn [{json:{\"object\":\"whatsapp_business_account\",\"entry\":[{\"id\":\"000000000000001\",\"changes\":[{\"field\":\"messages\",\"value\":{\"metadata\":{\"phone_number_id\":\"000000000000002\"},\"contacts\":[{\"wa_id\":\"525500000099\",\"profile\":{\"name\":\"Cliente ficticio de prueba\"}}],\"messages\":[{\"id\":\"wamid.SIMULATION_ONLY_001\",\"from\":\"525500000099\",\"timestamp\":\"1792195200\",\"type\":\"text\",\"text\":{\"body\":\"Quiero consultar un arreglo para cumpleaños. Fecha y flores por confirmar.\"}}]}}]}]}}];"
+      }
+    },
+    {
+      "id": "normalize",
+      "name": "Preparar consulta para revisión",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "function normalizeWhatsApp(payload){\n  if(!payload||payload.object!=='whatsapp_business_account'||!Array.isArray(payload.entry))throw Error('Evento de WhatsApp no válido.');\n  const results=[],seen=new Set();let count=0;\n  for(const entry of payload.entry){\n    for(const change of entry.changes||[]){\n      if(change.field!=='messages')continue;\n      const value=change.value||{},businessId=value.metadata?.phone_number_id;\n      if(!/^\\d{5,30}$/.test(String(businessId||'')))continue;\n      for(const message of value.messages||[]){\n        if(++count>100)throw Error('Demasiados mensajes en un evento.');\n        if(typeof message.id!=='string'||message.id.length>250||!message.id.trim())continue;\n        const from=String(message.from||'');if(!/^[1-9]\\d{7,14}$/.test(from))continue;\n        const key=businessId+':'+message.id;if(seen.has(key))continue;\n        const timestamp=String(message.timestamp||'');if(!/^\\d{9,11}$/.test(timestamp))continue;\n        const seconds=Number(timestamp),date=new Date(seconds*1000);if(!Number.isFinite(date.getTime()))continue;\n        const supported=['text','image','audio','document','video','sticker','location','contacts','interactive','button'];\n        if(!supported.includes(message.type))continue;\n        const text=message.type==='text'?message.text?.body:null;\n        if(message.type==='text'&&(typeof text!=='string'||!text.trim()||text.length>4096))continue;\n        const contact=(value.contacts||[]).find(c=>c.wa_id===from),name=contact?.profile?.name;\n        const reference=typeof text==='string'?text.match(/\\bAL-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\\b/i)?.[0]:null;\n        results.push({provider:'whatsapp_cloud',business_phone_number_id:String(businessId),provider_message_id:message.id,\n          sender_phone_e164:'+'+from,sender_display_name:typeof name==='string'?name.slice(0,160):null,\n          received_at:date.toISOString(),message_type:message.type,text:text??null,web_request_reference:reference??null,\n          requires_manual_review:true,proposed_state:'inquiry',payment_verified:false});\n        seen.add(key);\n      }\n    }\n  }\n  return results;\n}\nreturn $input.all().flatMap(item => normalizeWhatsApp(item.json).map(json => ({json})));"
+      }
+    },
+    {
+      "id": "note",
+      "name": "Límites de la prueba",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        220
+      ],
+      "parameters": {
+        "content": "## Solo simulación local\nNo activa webhooks, no escribe en Supabase y no envía mensajes.\nUn mensaje no es un pedido confirmado ni un pago.\nLa recepción real requiere Cloud API, verificación de firmas y deduplicación persistente.",
+        "height": 220,
+        "width": 750
+      }
+    }
+  ],
+  "connections": {
+    "Ejecutar prueba": {
+      "main": [
+        [
+          {
+            "node": "Mensaje ficticio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensaje ficticio": {
+      "main": [
+        [
+          {
+            "node": "Preparar consulta para revisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false
+  },
+  "pinData": {},
+  "tags": []
+}
