@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://*.supabase.co http://127.0.0.1:* http://localhost:*; img-src 'self' data:; base-uri 'none'; form-action 'self'; object-src 'none'">
+  <title>Administración privada | Áurea Lidia</title>
+  <link rel="stylesheet" href="/assets/gestion.css">
+  <script defer src="/assets/gestion-sdk.js"></script><script defer src="/assets/gestion-core.js"></script><script defer src="/assets/gestion.js"></script>
+</head>
+<body>
+<a href="#contenido" class="skip">Saltar al contenido</a>
+<header><div><strong>Áurea Lidia</strong><span>Administración · Jardín Eterno CDMX</span></div><button type="button" id="logout" hidden>Cerrar sesión</button></header>
+<main id="contenido">
+  <h1>Pedidos y cobros</h1>
+  <p id="notice" role="status" aria-live="polite">Acceso exclusivo para personal autorizado.</p>
+  <section id="access" class="panel narrow" aria-labelledby="access-heading">
+    <h2 id="access-heading">Iniciar sesión</h2>
+    <p>Introduce la configuración pública de tu proyecto. No se guarda en el repositorio ni se solicita una clave secreta.</p>
+    <form id="login-form">
+      <label>URL de Supabase<input name="url" type="url" required autocomplete="off" placeholder="https://tu-proyecto.supabase.co"></label>
+      <label>Publishable key<input name="key" required autocomplete="off" spellcheck="false" placeholder="sb_publishable_…"></label>
+      <label>Correo administrativo<input name="email" type="email" required autocomplete="username"></label>
+      <label>Contraseña<input name="password" type="password" required autocomplete="current-password"></label>
+      <button type="submit">Entrar al panel</button>
+    </form>
+    <form id="mfa-form" hidden><label>Código de tu autenticador<input name="code" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" required autocomplete="one-time-code"></label><button type="submit">Verificar código</button></form>
+    <p class="hint">La sesión se mantiene en memoria. Al recargar o cerrar la pestaña debes volver a entrar. La contraseña no se guarda por esta aplicación.</p>
+  </section>
+  <section id="workspace" hidden>
+    <p id="identity" class="hint"></p>
+    <nav aria-label="Administración"><button type="button" data-tab="orders" aria-current="page">Pedidos</button><button type="button" data-tab="customers">Clientes</button><button type="button" data-tab="new-order">Nuevo pedido</button><button type="button" data-tab="whatsapp-inbox">Consultas WhatsApp</button></nav>
+    <section id="whatsapp-inbox" class="panel" hidden aria-labelledby="inbox-heading">
+      <h2 id="inbox-heading">Consultas de WhatsApp</h2><p>Mensajes recibidos, pendientes de revisión humana. Un mensaje no confirma un pedido ni un pago. Los adjuntos se revisan en WhatsApp; no se descargan aquí.</p>
+      <form id="inbox-filters" class="filters"><label>Revisión<select name="state"><option value="">Todas</option><option value="received">Recibidas</option><option value="review_ready">Preparadas por n8n</option><option value="reviewed">Revisadas</option></select></label><button type="submit">Actualizar bandeja</button></form>
+      <div id="inbox-list"></div><div class="actions"><button type="button" id="inbox-prev">Anterior</button><span id="inbox-page"></span><button type="button" id="inbox-next">Siguiente</button></div>
+    </section>
+    <section id="orders" class="panel" aria-labelledby="orders-heading">
+      <h2 id="orders-heading">Pedidos registrados</h2>
+      <form id="order-filters" class="filters"><label>Estado<select name="status"><option value="">Todos</option></select></label><label>Entrega solicitada<input name="date" type="date"></label><button type="submit">Filtrar</button></form>
+      <div id="orders-list"></div><div class="actions"><button type="button" id="orders-prev">Anterior</button><span id="orders-page"></span><button type="button" id="orders-next">Siguiente</button></div>
+    </section>
+    <section id="customers" class="panel" hidden aria-labelledby="customers-heading">
+      <h2 id="customers-heading">Clientes</h2>
+      <form id="customer-search" class="filters"><label>Buscar por nombre<input name="query" type="search" maxlength="160"></label><button type="submit">Buscar</button></form>
+      <div id="customers-list"></div><div class="actions"><button type="button" id="customers-prev">Anterior</button><span id="customers-page"></span><button type="button" id="customers-next">Siguiente</button></div>
+      <h3>Registrar cliente</h3><form id="customer-form" class="fields">
+        <label>Nombre<input name="name" required maxlength="160" autocomplete="off"></label><label>Teléfono opcional, con +52<input name="phone" type="tel" pattern="\+[1-9][0-9]{7,14}" placeholder="+52…" autocomplete="off"></label><label>Correo opcional<input name="email" type="email" maxlength="254" autocomplete="off"></label><button type="submit">Guardar cliente</button>
+      </form>
+    </section>
+    <section id="new-order" class="panel" hidden aria-labelledby="new-heading">
+      <h2 id="new-heading">Crear borrador de pedido</h2><p>Registra lo acordado por WhatsApp. Después podrás completar la entrega y confirmar la cotización. Esto no registra un pago.</p>
+      <form id="new-order-form">
+        <fieldset id="draft-fields"><legend>Datos iniciales</legend>
+          <div class="fields"><label>Cliente opcional<select name="customer"><option value="">Sin cliente asignado</option></select></label><label>Marca<select name="brand"><option value="aurea_lidia">Áurea Lidia</option><option value="jardin_eterno">Jardín Eterno CDMX</option></select></label><label>Canal<select name="source"><option value="whatsapp">WhatsApp</option><option value="web">Web</option><option value="instagram">Instagram</option><option value="facebook">Facebook</option><option value="other">Otro</option></select></label><label>Envío acordado en MXN, opcional<input name="shipping" inputmode="decimal" placeholder="Vacío = por confirmar"></label></div>
+          <p class="hint">Se ofrecen hasta 500 clientes recientes. Usa la búsqueda en Clientes para elegir uno anterior. Los nombres y precios de partidas se capturan manualmente; no se modifica Google Sheets.</p>
+          <div id="draft-items"></div><button type="button" id="add-item">Añadir partida</button>
+        </fieldset>
+        <div class="actions"><button type="submit">Crear borrador</button><button type="button" id="discard-attempt" hidden>Descartar intento después de revisar el listado</button></div>
+      </form>
+    </section>
+    <section id="order-detail" class="panel" hidden aria-labelledby="detail-heading">
+      <button type="button" id="detail-close">← Volver a pedidos</button><h2 id="detail-heading" tabindex="-1">Detalle del pedido</h2>
+      <p id="detail-meta"></p><div id="detail-balances" class="balances"></div><div id="detail-items"></div>
+      <h3>Entrega y seguimiento</h3>
+      <form id="detail-form">
+        <fieldset id="detail-fields"><legend>Datos del pedido</legend><div class="fields">
+          <label>Estado<select name="status"></select></label><label>Presupuesto MXN<input name="budget_cents" inputmode="decimal"></label><label>Envío acordado MXN<input name="shipping_cents" inputmode="decimal"></label><label>Fecha solicitada<input name="requested_delivery_date" type="date"></label><label>Franja preferida<input name="preferred_time_slot" maxlength="120"></label><label>Región<select name="delivery_region"><option value="">Por confirmar</option><option value="cdmx">CDMX</option><option value="edomex">Estado de México</option></select></label><label>Colonia<input name="neighborhood" maxlength="160"></label><label>Alcaldía o municipio<input name="municipality" maxlength="160"></label><label>Código postal<input name="postal_code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"></label><label>Domicilio de entrega<input name="delivery_address" maxlength="500"></label><label>Destinatario opcional<input name="recipient_name" maxlength="160"></label><label>Teléfono del destinatario opcional<input name="recipient_phone" type="tel" pattern="\+[1-9][0-9]{7,14}"></label>
+        </div><label>Dedicatoria<textarea name="dedication" maxlength="500"></textarea></label><label>Preferencias<textarea name="preferences" maxlength="2000"></textarea></label><label>Notas operativas<textarea name="notes" maxlength="2000"></textarea></label></fieldset>
+        <button type="submit">Guardar seguimiento</button>
+      </form>
+      <h3>Cobros y devoluciones registrados</h3><p>No son pagos en línea. Solo administración puede verificar que el dinero se recibió o devolvió.</p><div id="detail-payments"></div>
+      <form id="payment-form"><fieldset id="payment-fields"><legend>Nuevo movimiento pendiente de verificar</legend><div class="fields"><label>Tipo<select name="kind"><option value="receipt">Cobro o anticipo</option><option value="refund">Devolución</option></select></label><label>Importe MXN<input name="amount" inputmode="decimal" required></label><label>Método<select name="method"><option value="transfer">Transferencia</option><option value="cash">Efectivo</option><option value="other">Otro</option></select></label><label>Referencia opcional<input name="reference" maxlength="200"></label></div></fieldset><button type="submit">Registrar pendiente</button></form>
+    </section>
+  </section>
+  <noscript>Activa JavaScript para usar el panel administrativo.</noscript>
+</main><footer>Datos privados de la operación. Cierra sesión al terminar en un equipo compartido.</footer>
+</body></html>

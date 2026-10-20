@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path');
 function writePagesConfig(root){
   const publicFiles=new Set(JSON.parse(fs.readFileSync(path.join(root,'deploy-manifest.json'),'utf8')));
-  const excluded=new Set(['scripts','tests','docs','domain','admin','outputs','node_modules','artifacts','release','release-*','.git','.env','.env.*']);
+  const excluded=new Set(['scripts','tests','docs','domain','admin','outputs','node_modules','artifacts','release','release-*','.git','.env','.env.*','supabase','automations','gestion.html','assets/gestion.css','assets/gestion.js','assets/gestion-core.js','assets/gestion-sdk.js']);
   function visit(dir=''){
     for(const entry of fs.readdirSync(path.join(root,dir),{withFileTypes:true})){
       const file=dir?dir+'/'+entry.name:entry.name;
